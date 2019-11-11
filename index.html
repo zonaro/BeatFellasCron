@@ -28,27 +28,27 @@
             background-color: #f1f1f1;
         }
 
-        /* Style the buttons inside the tab */
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 17px;
-        }
+            /* Style the buttons inside the tab */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+                font-size: 17px;
+            }
 
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            background-color: #ddd;
-        }
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
 
-        /* Create an active/current tablink class */
-        .tab button.active {
-            background-color: #ccc;
-        }
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
 
         /* Style the tab content */
         .tabcontent {
@@ -70,26 +70,26 @@
             border-radius: 40px
         }
 
-        button .green {
-            background-color: #4CAF50;
-        }
+            button .green {
+                background-color: #4CAF50;
+            }
 
-        button .blue {
-            background-color: #008CBA;
-        }
+            button .blue {
+                background-color: #008CBA;
+            }
 
-        button .red {
-            background-color: #f44336;
-        }
+            button .red {
+                background-color: #f44336;
+            }
 
-        button .black {
-            background-color: #e7e7e7;
-            color: black;
-        }
+            button .black {
+                background-color: #e7e7e7;
+                color: black;
+            }
 
-        button .grey {
-            background-color: #555555;
-        }
+            button .grey {
+                background-color: #555555;
+            }
     </style>
 </head>
 
@@ -97,179 +97,180 @@
 
     <h1>Painel de Controle do Cronômetro</h1>
 
-        <button onclick="AbrirTelao()">Abrir Cronômetro</button>
-        <hr>
-        <h2>Controles</h2>
-        <input placeholder="60" type="number" id="digitos" />
-        <button class='green' onclick="Comando('Iniciar',digitos.value)">Iniciar</button>
-        <button class='red' onclick="Comando('Limpar')">Limpar</button>
-        <h2>Configurações</h2>
+    <button onclick="AbrirTelao()">Abrir Cronômetro</button>
+    <hr>
+    <h2>Controles</h2>
+    <input placeholder="60" type="number" id="digitos" />
+    <button class='green' onclick="Comando('Iniciar',digitos.value)">Iniciar</button>
+    <button class='red' onclick="Comando('Limpar')">Limpar</button>
+    <h2>Configurações</h2>
 
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'nomes')">Editar Participantes</button>
-            <button class="tablinks" onclick="openTab(event, 'equalizador')">Configurações de Equalizador
-                Visual</button>
-            <button class="tablinks" onclick="openTab(event, 'configlogo')">Configurações de Logo</button>
-            <button class="tablinks" onclick="openTab(event, 'planodefundo')">Configurações de Plano de Fundo</button>
-        </div>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'nomes')">Editar Participantes</button>
+        <button class="tablinks" onclick="openTab(event, 'equalizador')">
+            Configurações de Equalizador
+            Visual
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'configlogo')">Configurações de Logo</button>
+        <button class="tablinks" onclick="openTab(event, 'planodefundo')">Configurações de Plano de Fundo</button>
+    </div>
 
+    <div id="nomes" class="tabcontent">
+        <h3>Nomes</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Esquerda  <button class="red" onclick="Comando('InverterEsquerdaMeio');">↔</button></th>
+                    <th>Meio  <button class="red" onclick="Comando('InverterDireitaMeio');">↔</button></th>
+                    <th>Direita</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="inputs_nomes">
+                    <td><input type="text" oninput="Comando('NomeEsquerda',this.value)"></td>
+                    <td> <input type="text" oninput="Comando('NomeMeio',this.value)"></td>
+                    <td><input type="text" oninput="Comando('NomeDireita',this.value)"></td>
+                </tr>
+            </tbody>
+        </table>
 
+        <button class="red" onclick="Comando('LimparNomes');">Limpar Nomes</button><br />
+        <button class="red" onclick="Comando('InverterDireitaEsquerda');">Inverter Direita ↔ Esquerda</button>
+        <button class="red" onclick="Comando('InverterDireitaMeio');">Inverter Direita ↔ Meio</button>
+        <button class="red" onclick="Comando('InverterEsquerdaMeio');">Inverter Esquerda ↔ Meio</button>
+    </div>
 
-        <div id="nomes" class="tabcontent">
-            <h3>Nomes</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Esquerda</th>
-                        <th>Meio</th>
-                        <th>Direita</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="inputs_nomes">
-                        <td><input type="text" oninput="Comando('NomeEsquerda',this.value)"></td>
-                        <td> <input type="text" oninput="Comando('NomeMeio',this.value)"></td>
-                        <td><input type="text" oninput="Comando('NomeDireita',this.value)"></td>
-                    </tr>
-
-                </tbody>
-            </table>
-            
-            <button class="red" onclick="Comando('LimparNomes');">Limpar Nomes</button>
-        </div>
-
-        <div id="configlogo" class="tabcontent">
-            <h3>Logo</h3>
-            <select id='logochanger' onchange="Comando('Logo',this.value)">
-                <option value="/logos/beatfellasH.png" selected>BeatFellas Horizontal</option>
-                <option value="/logos/beatfellasV.png">BeatFellas Vertical</option>
-                <option value="/logos/ligadobeat.png">Liga do Beat</option>
-                <option value="/logos/nacional.png">Campeonato Nacional</option>
-                <option value="/logos/copa.png">Copa do Beat</option>
-                <option value="/logos/beatmaster.png">BeatMaster</option>
-                <option value="/logos/beatmasterEX.png">BeatMaster Edição Especial</option>
-                <option value="/logos/vidro.png">Batalha de Vidro</option>
-                <option value="/logos/real.png">Real Beatbox</option>
-            </select>
-            <button class="green" onclick="Comando('Logo', logochanger.value)">
-                Alterar
-            </button>
-            <h4>Alterar Tamanho</h4>
-            <input style="width:100%" type="range" min="10" max="100" value="75"
-                onchange="Comando('LogoSize',this.value)">
-            <h4>Filtros</h4>
-            <div class="filtros">
-                <label> Inverter
-                    <input onchange="AplicarFiltros()" id="input_invert" type="checkbox" value="1">
-                </label>
-                <label> Saturação
-                    <input onchange="AplicarFiltros()" id="input_grayscale" min="-1" max="200" type="range" value="-1">
-                </label>
-                <label> Hue
-                    <input onchange="AplicarFiltros()" id="input_hue" min="-1" max="360" type="range" value="-1">
-                </label>
-                <label> Brilho
-                    <input onchange="AplicarFiltros()" id="input_brightness" min="-1" max="200" type="range" value="-1">
-                </label>
-                <label> Contraste
-                    <input onchange="AplicarFiltros()" id="input_contrast" min="-1" max="200" type="range" value="-1">
-                </label>
-                <button class="red" onclick="Comando('LimparFiltros')">Limpar Filtros</button>
-            </div>
-
-        </div>
-
-        <div id="equalizador" class="tabcontent">
-            <h3>Equalizador</h3>
-            <h4>Cores</h4>
+    <div id="configlogo" class="tabcontent">
+        <h3>Logo</h3>
+        <select id='logochanger' onchange="Comando('Logo',this.value)">
+            <option value="/logos/beatfellasH.png" selected>BeatFellas Horizontal</option>
+            <option value="/logos/beatfellasV.png">BeatFellas Vertical</option>
+            <option value="/logos/ligadobeat.png">Liga do Beat</option>
+            <option value="/logos/nacional.png">Campeonato Nacional</option>
+            <option value="/logos/copa.png">Copa do Beat</option>
+            <option value="/logos/beatmaster.png">BeatMaster</option>
+            <option value="/logos/beatmasterEX.png">BeatMaster Edição Especial</option>
+            <option value="/logos/vidro.png">Batalha de Vidro</option>
+            <option value="/logos/real.png">Real Beatbox</option>
+        </select>
+        <button class="green" onclick="Comando('Logo', logochanger.value)">
+            Alterar
+        </button>
+        <h4>Alterar Tamanho</h4>
+        <input style="width:100%" type="range" min="10" max="100" value="75"
+               onchange="Comando('LogoSize',this.value)">
+        <h4>Filtros</h4>
+        <div class="filtros">
             <label>
-                Cor 1 - Som Baixo <input type="color" onchange="Comando('Cor_Eq1',this.value)" />
+                Inverter
+                <input onchange="AplicarFiltros()" id="input_invert" type="checkbox" value="1">
             </label>
             <label>
-                Cor 2 - Som Medio <input type="color" onchange="Comando('Cor_Eq2',this.value)" />
+                Saturação
+                <input onchange="AplicarFiltros()" id="input_grayscale" min="-1" max="200" type="range" value="-1">
             </label>
             <label>
-                Cor 3 - Som Alto <input type="color" onchange="Comando('Cor_Eq3',this.value)" />
+                Hue
+                <input onchange="AplicarFiltros()" id="input_hue" min="-1" max="360" type="range" value="-1">
             </label>
             <label>
-                Cor 4 - Som Muito Alto <input type="color" onchange="Comando('Cor_Eq4',this.value)" />
+                Brilho
+                <input onchange="AplicarFiltros()" id="input_brightness" min="-1" max="200" type="range" value="-1">
             </label>
-            <h4>Ligar/Desligar</h4>
-            <input type="checkbox" class="onoff" onchange="Comando('Eqv',this.checked)" checked />
-
+            <label>
+                Contraste
+                <input onchange="AplicarFiltros()" id="input_contrast" min="-1" max="200" type="range" value="-1">
+            </label>
+            <button class="red" onclick="Comando('LimparFiltros')">Limpar Filtros</button>
         </div>
+    </div>
 
-        <div id="planodefundo" class="tabcontent">
-            <h3>Plano de Fundo</h3>
-            <h4>Cor do Plano de Fundo</h4>
-            <input type="color" onchange="Comando('CorBG',this.value)">
-            <h4>Cor da Fonte</h4>
-            <input type="color" onchange="Comando('CorFonte',this.value)">
-        </div>
+    <div id="equalizador" class="tabcontent">
+        <h3>Equalizador</h3>
+        <h4>Cores</h4>
+        <label>
+            Cor 1 - Som Baixo <input type="color" onchange="Comando('Cor_Eq1',this.value)" />
+        </label>
+        <label>
+            Cor 2 - Som Medio <input type="color" onchange="Comando('Cor_Eq2',this.value)" />
+        </label>
+        <label>
+            Cor 3 - Som Alto <input type="color" onchange="Comando('Cor_Eq3',this.value)" />
+        </label>
+        <label>
+            Cor 4 - Som Muito Alto <input type="color" onchange="Comando('Cor_Eq4',this.value)" />
+        </label>
+        <h4>Ligar/Desligar</h4>
+        <input type="checkbox" class="onoff" onchange="Comando('Eqv',this.checked)" checked />
+    </div>
 
+    <div id="planodefundo" class="tabcontent">
+        <h3>Plano de Fundo</h3>
+        <h4>Cor do Plano de Fundo</h4>
+        <input type="color" onchange="Comando('CorBG',this.value)">
+        <h4>Cor da Fonte</h4>
+        <input type="color" onchange="Comando('CorFonte',this.value)">
+    </div>
 
-        <script>
-            function openTab(evt, tabName) {
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
-                tablinks = document.getElementsByClassName("tablinks");
-                for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
-                document.getElementById(tabName).style.display = "block";
-                evt.currentTarget.className += " active";
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
             }
-
-            let telao = null;
-
-            function AbrirTelao() {
-                if (telao) {
-                    telao.close();
-                }
-                telao = window.open("/cronometro.html", "TELÃO", "width=800,height=800")
-                telao.onclose = function () {
-                    console.warn('Cronômetro Fechado');
-                    telao = null;
-                }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
 
-            function AplicarFiltros() {
-                let filter_string = ''
-                if (input_invert.checked) {
-                    filter_string += ' invert(1) '
-                }
-                if (input_grayscale.value > -1) {
-                    filter_string += ' grayscale(' + input_grayscale.value + '%) '
-                }
-                if (input_hue.value > -1) {
-                    filter_string += ' hue-rotate(' + input_hue.value + 'deg) '
-                }
-                if (input_contrast.value > -1) {
-                    filter_string += ' contrast(' + input_contrast.value + '%) '
-                }
-                if (input_brightness.value > -1) {
-                    filter_string += ' brightness(' + input_brightness.value + '%) '
-                }
-                console.log("Aplicar filtro", filter_string)
-                Comando("LogoFilter", filter_string)
+        let telao = null;
+
+        function AbrirTelao() {
+            if (telao) {
+                telao.close();
             }
-
-            function Comando(comando, valor) {
-                if (telao) {
-                    telao.postMessage({
-                        "comando": comando,
-                        "valor": valor
-                    }, '*');
-                } else {
-                    alert("Cronometro não está aberto")
-                }
+            telao = window.open("/cronometro.html", "TELÃO", "width=800,height=800")
+            telao.onclose = function () {
+                console.warn('Cronômetro Fechado');
+                telao = null;
             }
-        </script>
+        }
 
+        function AplicarFiltros() {
+            let filter_string = ''
+            if (input_invert.checked) {
+                filter_string += ' invert(1) '
+            }
+            if (input_grayscale.value > -1) {
+                filter_string += ' grayscale(' + input_grayscale.value + '%) '
+            }
+            if (input_hue.value > -1) {
+                filter_string += ' hue-rotate(' + input_hue.value + 'deg) '
+            }
+            if (input_contrast.value > -1) {
+                filter_string += ' contrast(' + input_contrast.value + '%) '
+            }
+            if (input_brightness.value > -1) {
+                filter_string += ' brightness(' + input_brightness.value + '%) '
+            }
+            console.log("Aplicar filtro", filter_string)
+            Comando("LogoFilter", filter_string)
+        }
 
+        function Comando(comando, valor) {
+            if (telao) {
+                telao.postMessage({
+                    "comando": comando,
+                    "valor": valor
+                }, '*');
+            } else {
+                alert("Cronometro não está aberto")
+            }
+        }
+    </script>
 </body>
-
 </html>

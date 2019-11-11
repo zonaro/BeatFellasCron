@@ -2,9 +2,10 @@
 <html>
 
 <head>
-    <script src="jquery-3.4.0.min.js"></script>
-    <script src="jquery.timer.js"></script>
+    <script src="/jquery-3.4.0.min.js"></script>
+    <script src="/jquery.timer.js"></script>
 
+    <link href="/glitch.css" />
     <style>
         @font-face {
             font-family: 'Archive';
@@ -115,7 +116,7 @@
         }
 
         .nomes {
-            display: flex!important;
+            display: flex !important;
             justify-content: space-between;
             align-items: flex-end;
             height: 100%;
@@ -130,18 +131,18 @@
 
         <div class="middle">
             <img src="/logos/beatfellasH.png" alt="" class="logo" />
-            <p class="digitos"></p>
+            <p class="digitos glitch"></p>
         </div>
 
         <div class="nomes">
             <div class="bottomleft nome">
-                <p class="bigname" id="esquerda"></p>
+                <p class="bigname glitch" id="esquerda"></p>
             </div>
             <div class="bottommiddle nome">
-                <p class="bigname" id="meio"></p>
+                <p class="bigname glitch" id="meio"></p>
             </div>
             <div class="bottomright nome">
-                <p class="bigname" id="direita"></p>
+                <p class="bigname glitch" id="direita"></p>
             </div>
         </div>
 
@@ -226,7 +227,7 @@
             function Iniciar(sec) {
                 sec = sec || 60
                 Limpar();
-                __Exibir("block")
+                __Exibir("flex")
                 ct = $(".digitos").timer({
                     countdown: true,
                     duration: sec + "s", // The number of seconds to start the timer from
@@ -276,6 +277,7 @@
             //fica vigiando o .digitos
             $("body").on('DOMSubtreeModified', ".digitos", function () {
                 let txt = $(this).text() || ""
+                $(this).data('text', txt);
                 if (txt !== "") {
                     let ii = parseInt(txt);
                     if (ii <= 10) {
@@ -347,9 +349,16 @@
                             lastcolor = event.data.valor;
                             $(".eq").css("color", lastcolor);
                             $(".bigname").css("color", lastcolor);
-
                             break;
-
+                        case "InverterDireitaEsquerda":
+                            InverterDireitaEsquerda();
+                            break;
+                        case "InverterDireitaMeio":
+                            InverterDireitaMeio();
+                            break;
+                        case "InverterEsquerdaMeio":
+                            InverterEsquerdaMeio();
+                            break;
                         default:
                             console.warn("Nada executado");
                             break;
