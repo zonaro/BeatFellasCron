@@ -1,199 +1,195 @@
-﻿
-
-@keyframes glitch-anim-1 {
+﻿@keyframes noise-anim {
     0% {
-        clip-path: inset(100% 0 0 0);
+        clip-path: inset(75% 0 13% 0);
     }
 
-    88% {
-        clip-path: inset(100% 0 0 0);
+    5% {
+        clip-path: inset(67% 0 23% 0);
     }
 
-    89% {
-        display: inline-block;
-        clip-path: inset(38% 0 20% 0);
+    10% {
+        clip-path: inset(18% 0 43% 0);
     }
 
-    89.6666666667% {
-        display: inline-block;
-        clip-path: inset(96% 0 4% 0);
+    15% {
+        clip-path: inset(84% 0 17% 0);
     }
 
-    90.3333333333% {
-        display: inline-block;
-        clip-path: inset(62% 0 24% 0);
+    20% {
+        clip-path: inset(98% 0 1% 0);
     }
 
-    91% {
-        display: inline-block;
-        clip-path: inset(12% 0 61% 0);
+    25% {
+        clip-path: inset(56% 0 11% 0);
     }
 
-    91.6666666667% {
-        display: inline-block;
-        clip-path: inset(76% 0 13% 0);
+    30% {
+        clip-path: inset(43% 0 11% 0);
     }
 
-    92.3333333333% {
-        display: inline-block;
-        clip-path: inset(65% 0 14% 0);
+    35% {
+        clip-path: inset(20% 0 61% 0);
     }
 
-    93% {
-        display: inline-block;
-        clip-path: inset(59% 0 7% 0);
+    40% {
+        clip-path: inset(93% 0 4% 0);
     }
 
-    93.6666666667% {
-        display: inline-block;
-        clip-path: inset(3% 0 8% 0);
+    45% {
+        clip-path: inset(90% 0 7% 0);
     }
 
-    94.3333333333% {
-        display: inline-block;
-        clip-path: inset(61% 0 14% 0);
+    50% {
+        clip-path: inset(57% 0 8% 0);
+    }
+
+    55% {
+        clip-path: inset(58% 0 17% 0);
+    }
+
+    60% {
+        clip-path: inset(44% 0 12% 0);
+    }
+
+    65% {
+        clip-path: inset(24% 0 35% 0);
+    }
+
+    70% {
+        clip-path: inset(69% 0 23% 0);
+    }
+
+    75% {
+        clip-path: inset(27% 0 36% 0);
+    }
+
+    80% {
+        clip-path: inset(11% 0 39% 0);
+    }
+
+    85% {
+        clip-path: inset(31% 0 44% 0);
+    }
+
+    90% {
+        clip-path: inset(46% 0 31% 0);
     }
 
     95% {
-        display: inline-block;
-        clip-path: inset(34% 0 42% 0);
-    }
-
-    95.6666666667% {
-        display: inline-block;
-        clip-path: inset(26% 0 71% 0);
-    }
-
-    96.3333333333% {
-        display: inline-block;
-        clip-path: inset(37% 0 13% 0);
-    }
-
-    97% {
-        display: inline-block;
-        clip-path: inset(65% 0 34% 0);
-    }
-
-    97.6666666667% {
-        display: inline-block;
-        clip-path: inset(64% 0 30% 0);
-    }
-
-    98.3333333333% {
-        display: inline-block;
-        clip-path: inset(54% 0 38% 0);
-    }
-
-    99% {
-        display: inline-block;
-        clip-path: inset(85% 0 7% 0);
+        clip-path: inset(63% 0 32% 0);
     }
 
     100% {
-        clip-path: inset(100% 0 0 0);
+        clip-path: inset(70% 0 16% 0);
     }
 }
 
-@keyframes glitch-anim-2 {
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -1px 0 red;
+    top: 0;
+    color: white;
+    background: black;
+    overflow: hidden;
+    animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
     0% {
-        clip-path: inset(0 0 100% 0);
+        clip-path: inset(55% 0 23% 0);
     }
 
-    88% {
-        clip-path: inset(0 0 100% 0);
+    5% {
+        clip-path: inset(39% 0 41% 0);
     }
 
-    89% {
-        display: inline-block;
-        clip-path: inset(40% 0 24% 0);
+    10% {
+        clip-path: inset(83% 0 18% 0);
     }
 
-    89.6666666667% {
-        display: inline-block;
-        clip-path: inset(82% 0 4% 0);
+    15% {
+        clip-path: inset(41% 0 26% 0);
     }
 
-    90.3333333333% {
-        display: inline-block;
-        clip-path: inset(40% 0 41% 0);
+    20% {
+        clip-path: inset(99% 0 2% 0);
     }
 
-    91% {
-        display: inline-block;
-        clip-path: inset(14% 0 14% 0);
+    25% {
+        clip-path: inset(39% 0 49% 0);
     }
 
-    91.6666666667% {
-        display: inline-block;
-        clip-path: inset(68% 0 27% 0);
+    30% {
+        clip-path: inset(99% 0 1% 0);
     }
 
-    92.3333333333% {
-        display: inline-block;
-        clip-path: inset(51% 0 39% 0);
+    35% {
+        clip-path: inset(65% 0 23% 0);
     }
 
-    93% {
-        display: inline-block;
-        clip-path: inset(25% 0 45% 0);
+    40% {
+        clip-path: inset(10% 0 63% 0);
     }
 
-    93.6666666667% {
-        display: inline-block;
-        clip-path: inset(22% 0 41% 0);
+    45% {
+        clip-path: inset(45% 0 42% 0);
     }
 
-    94.3333333333% {
-        display: inline-block;
-        clip-path: inset(87% 0 12% 0);
+    50% {
+        clip-path: inset(33% 0 40% 0);
+    }
+
+    55% {
+        clip-path: inset(59% 0 42% 0);
+    }
+
+    60% {
+        clip-path: inset(72% 0 10% 0);
+    }
+
+    65% {
+        clip-path: inset(40% 0 57% 0);
+    }
+
+    70% {
+        clip-path: inset(100% 0 1% 0);
+    }
+
+    75% {
+        clip-path: inset(83% 0 10% 0);
+    }
+
+    80% {
+        clip-path: inset(97% 0 3% 0);
+    }
+
+    85% {
+        clip-path: inset(27% 0 65% 0);
+    }
+
+    90% {
+        clip-path: inset(68% 0 24% 0);
     }
 
     95% {
-        display: inline-block;
-        clip-path: inset(71% 0 5% 0);
-    }
-
-    95.6666666667% {
-        display: inline-block;
-        clip-path: inset(53% 0 39% 0);
-    }
-
-    96.3333333333% {
-        display: inline-block;
-        clip-path: inset(76% 0 5% 0);
-    }
-
-    97% {
-        display: inline-block;
-        clip-path: inset(45% 0 24% 0);
-    }
-
-    97.6666666667% {
-        display: inline-block;
-        clip-path: inset(21% 0 27% 0);
-    }
-
-    98.3333333333% {
-        display: inline-block;
-        clip-path: inset(67% 0 7% 0);
-    }
-
-    99% {
-        display: inline-block;
-        clip-path: inset(91% 0 5% 0);
+        clip-path: inset(38% 0 10% 0);
     }
 
     100% {
-        clip-path: inset(0 0 100% 0);
+        clip-path: inset(14% 0 53% 0);
     }
 }
 
- 
-
-.glitch{
-    animation: glitch-anim-1 10s infinite linear normal;
-}
-
-.anim-2 {
-    animation: glitch-anim-2 10s infinite linear normal;
+.glitch::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    text-shadow: 1px 0 blue;
+    top: 0;
+    color: white;
+    background: black;
+    overflow: hidden;
+    animation: noise-anim-2 15s infinite linear alternate-reverse;
 }
