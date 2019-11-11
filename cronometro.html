@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="jquery-3.4.0.min.js"></script>
+    <script src="jquery.timer.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'Archive';
+            src: url('Archive-Regular.woff2') format('woff2'), url('Archive-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'The Led Display St';
+            src: url('TheLedDisplaySt.woff2') format('woff2'), url('TheLedDisplaySt.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-family: 'Archive';
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .logo {
+            width: 75%;
+            height: 75%;
+        }
+
+        .contents {
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            color: white;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 25px;
+            z-index: 5;
+        }
+
+        .topleft {
+            position: absolute;
+            top: 0;
+            left: 16px;
+        }
+
+        .nome {
+            word-break: break-word;
+        }
+
+        .bottomleft .bigname {
+            text-align: left;
+        }
+
+        .bottommiddle .bigname {
+            text-align: center;
+        }
+
+        .bottomright .bigname {
+            text-align: right;
+        }
+
+        .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .bigname {
+            font-size: 4vw;
+            font-family: 'Archive';
+            text-align: center;
+            margin: 2vw;
+        }
+
+        .digitos {
+            font-size: 10vw;
+            font-family: "The Led Display St";
+        }
+
+        .eq svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+        }
+
+        .eq path {
+            stroke-linecap: square;
+            stroke: white;
+            stroke-width: 0.5px;
+        }
+
+        .eq {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: -10;
+            color: white;
+            background-color: black;
+        }
+
+        .nomes {
+            display: flex!important;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 100%;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contents">
+
+        <div class="middle">
+            <img src="/logos/beatfellasH.png" alt="" class="logo" />
+            <p class="digitos"></p>
+        </div>
+
+        <div class="nomes">
+            <div class="bottomleft nome">
+                <p class="bigname" id="esquerda"></p>
+            </div>
+            <div class="bottommiddle nome">
+                <p class="bigname" id="meio"></p>
+            </div>
+            <div class="bottomright nome">
+                <p class="bigname" id="direita"></p>
+            </div>
+        </div>
+
+        <div class="eq">
+
+            <svg preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <mask id="mask">
+                        <g id="maskGroup">
+                        </g>
+                    </mask>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop id="Cor_Eq4" offset="0%" style="stop-color:#2a0079;stop-opacity:1" />
+                        <stop id="Cor_Eq3" offset="20%" style="stop-color:#f1ff0a;stop-opacity:1" />
+                        <stop id="Cor_Eq2" offset="90%" style="stop-color:#d923b9;stop-opacity:1" />
+                        <stop id="Cor_Eq1" offset="100%" style="stop-color:rgb(35, 0, 117);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" mask="url(#mask)"></rect>
+            </svg>
+        </div>
+        <script>
+            let ct = null
+
+            function __TrocaLogo(nome) {
+                nome = nome || "beatfellasH.png"
+                $(".logo").fadeOut(500, function () {
+                    $(".logo ").attr('src', nome);
+                }).fadeIn(1000)
+            }
+
+            function __Nome(nome, local) {
+                nome = nome || "";
+                $(local).text(nome)
+                $(local).closest("div").css("display", nome == "" ? "none" : "block")
+                $(".nomes").css("display", "block");
+            }
+
+            function InverterDireitaEsquerda() {
+                let nome1 = $("#direita").text();
+                let nome2 = $("#esquerda").text();
+                NomeDireita(nome2);
+                NomeEsquerda(nome1);
+            }
+
+            function InverterDireitaMeio() {
+                let nome1 = $("#direita").text();
+                let nome2 = $("#meio").text();
+                NomeDireita(nome2);
+                NomeMeio(nome1);
+            }
+
+            function InverterEsquerdaMeio() {
+                let nome1 = $("#esquerda").text();
+                let nome2 = $("#meio").text();
+                NomeEsquerda(nome2);
+                NomeMeio(nome1);
+            }
+
+            function NomeDireita(nome) {
+                __Nome(nome, "#direita")
+            }
+
+            function NomeEsquerda(nome) {
+                __Nome(nome, "#esquerda")
+            }
+
+            function NomeMeio(nome) {
+                __Nome(nome, "#meio")
+            }
+
+            function LimparNomes() {
+                NomeDireita()
+                NomeEsquerda()
+                NomeMeio()
+                $(".nomes").css("display", "none");
+
+            }
+
+            /// Inicia o cronometro com o tempo especificado
+            function Iniciar(sec) {
+                sec = sec || 60
+                Limpar();
+                __Exibir("block")
+                ct = $(".digitos").timer({
+                    countdown: true,
+                    duration: sec + "s", // The number of seconds to start the timer from
+                    callback: function () {
+                        Limpar();
+                    },
+                    repeat: false, // If duration is set, `callback` will be called repeatedly
+                    format: "%T", // Format to show time in
+                    editable: false, // If click and edit time is enabled
+                    hidden: false // If true, the timer is not displayed in the selected item.
+                });
+            }
+
+            function __Exibir(noneBlock) {
+                noneBlock = noneBlock || "block"
+                $(".digitos").css("display", noneBlock);
+            }
+
+            function Limpar() {
+                if (ct) {
+                    ct.timer('remove')
+                }
+                __Exibir("none");
+            }
+
+            function Piscar() {
+                $(".digitos").fadeToggle(500)
+                $(".digitos").fadeToggle(500)
+
+            }
+
+            function Restart() {
+                location.href = location.href + ""
+            }
+
+            function __CorEq(id, valor) {
+                $("#" + id).css("stop-color", valor);
+            }
+
+            $(document).ready(function () {
+                LimparNomes();
+                Limpar();
+
+            });
+
+            var lastcolor = "white"
+            //fica vigiando o .digitos
+            $("body").on('DOMSubtreeModified', ".digitos", function () {
+                let txt = $(this).text() || ""
+                if (txt !== "") {
+                    let ii = parseInt(txt);
+                    if (ii <= 10) {
+                        $(".digitos").css("color", "red");
+                    } else {
+                        $(".digitos").css("color", lastcolor);
+                    }
+                }
+            });
+
+            window.addEventListener('message', function (event) {
+
+                // IMPORTANT: Check the origin of the data!
+                if (~event.origin.indexOf(window.location.hostname)) {
+                    console.log(event.data);
+                    switch (event.data.comando) {
+                        case "Iniciar":
+                            Iniciar(event.data.valor)
+                            break;
+                        case "Limpar":
+                            Limpar();
+                            break;
+                        case "Logo":
+                            __TrocaLogo(event.data.valor);
+                            break;
+                        case "Eqv":
+                            $("#visualizer").css('display', event.data.valor ? 'block' : 'none');
+                            break;
+                        case "Cor_Eq1":
+                        case "Cor_Eq2":
+                        case "Cor_Eq3":
+                        case "Cor_Eq4":
+                            __CorEq(event.data.comando, event.data.valor)
+                            break;
+                        case "LogoSize":
+                            $(".logo").css('width', event.data.valor + "%");
+                            $(".logo").css('height', event.data.valor + "%");
+                            break;
+                        case "LogoFilter":
+                            $(".logo").css({
+                                WebkitFilter: event.data.valor
+                            });
+                            break;
+                        case "LimparFiltros":
+                            $(".logo").css({
+                                WebkitFilter: ''
+                            });
+                            break;
+                        case "NomeSize":
+                            $(".bigname").css('width', event.data.valor + "vw");
+                            $(".bigname").css('height', event.data.valor + "vw");
+                        case "NomeDireita":
+                            NomeDireita(event.data.valor);
+                            break;
+
+                        case "NomeEsquerda":
+                            NomeEsquerda(event.data.valor);
+                            break;
+
+                        case "NomeMeio":
+                            NomeMeio(event.data.valor);
+                            break;
+                        case "LimparNomes":
+                            LimparNomes();
+                        case "CorBG":
+                            $(".eq").css("background-color", event.data.valor);
+                            break;
+                        case "CorFonte":
+                            lastcolor = event.data.valor;
+                            $(".eq").css("color", lastcolor);
+                            $(".bigname").css("color", lastcolor);
+
+                            break;
+
+                        default:
+                            console.warn("Nada executado");
+                            break;
+                    }
+
+                } else {
+                    console.log("Hostname invalido")
+                    return;
+                }
+            });
+        </script>
+
+        <!-- plugin equalizador -->
+        <script src="eq.js"></script>
+    </div>
+</body>
+</html>
