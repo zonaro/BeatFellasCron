@@ -58,7 +58,7 @@
             border-top: none;
         }
 
-        button {
+        button:not(.off) {
             border-color: rgb(94, 94, 94);
             padding: 15px 32px;
             text-align: center;
@@ -70,26 +70,22 @@
             border-radius: 40px
         }
 
-            button .green {
-                background-color: #4CAF50;
-            }
+        button.green {
+            background-color: #4CAF50;
+        }
 
-            button .blue {
-                background-color: #008CBA;
-            }
+        button.blue {
+            background-color: #008CBA;
+        }
 
-            button .red {
-                background-color: #f44336;
-            }
+        button.red {
+            background-color: #f44336;
+        }
 
-            button .black {
-                background-color: #e7e7e7;
-                color: black;
-            }
-
-            button .grey {
-                background-color: #555555;
-            }
+        button.black {
+            background-color: #e7e7e7;
+            color: black;
+        }
     </style>
 </head>
 
@@ -103,6 +99,7 @@
     <input placeholder="60" type="number" id="digitos" />
     <button class='green' onclick="Comando('Iniciar',digitos.value)">Iniciar</button>
     <button class='red' onclick="Comando('Limpar')">Limpar</button>
+    <div class="cron_feedback"></div>
     <h2>Configurações</h2>
 
     <div class="tab">
@@ -120,8 +117,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Esquerda  <button class="red" onclick="Comando('InverterEsquerdaMeio');">↔</button></th>
-                    <th>Meio  <button class="red" onclick="Comando('InverterDireitaMeio');">↔</button></th>
+                    <th>Esquerda  <button class="off" onclick="Comando('InverterEsquerdaMeio');">↔</button></th>
+                    <th>Meio  <button class="off" onclick="Comando('InverterDireitaMeio');">↔</button></th>
                     <th>Direita</th>
                 </tr>
             </thead>
@@ -138,20 +135,25 @@
         <button class="red" onclick="Comando('InverterDireitaEsquerda');">Inverter Direita ↔ Esquerda</button>
         <button class="red" onclick="Comando('InverterDireitaMeio');">Inverter Direita ↔ Meio</button>
         <button class="red" onclick="Comando('InverterEsquerdaMeio');">Inverter Esquerda ↔ Meio</button>
+        <hr />
+        <label>
+            Tamanho da Fonte
+            <input onchange="Comando('NomeSize',this.value)" id="input_contrast" step="0.1" min="4" max="10" type="range" value="4">
+        </label>
     </div>
 
     <div id="configlogo" class="tabcontent">
         <h3>Logo</h3>
         <select id='logochanger' onchange="Comando('Logo',this.value)">
-            <option value="/logos/beatfellasH.png" selected>BeatFellas Horizontal</option>
-            <option value="/logos/beatfellasV.png">BeatFellas Vertical</option>
-            <option value="/logos/ligadobeat.png">Liga do Beat</option>
-            <option value="/logos/nacional.png">Campeonato Nacional</option>
-            <option value="/logos/copa.png">Copa do Beat</option>
-            <option value="/logos/beatmaster.png">BeatMaster</option>
-            <option value="/logos/beatmasterEX.png">BeatMaster Edição Especial</option>
-            <option value="/logos/vidro.png">Batalha de Vidro</option>
-            <option value="/logos/real.png">Real Beatbox</option>
+            <option value="logos/beatfellasH.png" selected>BeatFellas Horizontal</option>
+            <option value="logos/beatfellasV.png">BeatFellas Vertical</option>
+            <option value="logos/ligadobeat.png">Liga do Beat</option>
+            <option value="logos/nacional.png">Campeonato Nacional</option>
+            <option value="logos/copa.png">Copa do Beat</option>
+            <option value="logos/beatmaster.png">BeatMaster</option>
+            <option value="logos/beatmasterEX.png">BeatMaster Edição Especial</option>
+            <option value="logos/vidro.png">Batalha de Vidro</option>
+            <option value="logos/real.png">Real Beatbox</option>
         </select>
         <button class="green" onclick="Comando('Logo', logochanger.value)">
             Alterar
@@ -213,6 +215,7 @@
     </div>
 
     <script>
+
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -233,7 +236,8 @@
             if (telao) {
                 telao.close();
             }
-            telao = window.open("/cronometro.html", "TELÃO", "width=800,height=800")
+            telao = window.open("cronometro.html", "TELÃO")
+            //telao.enterFullscreen();
             telao.onclose = function () {
                 console.warn('Cronômetro Fechado');
                 telao = null;
