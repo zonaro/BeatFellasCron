@@ -5,10 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/jquery-3.4.0.min.js"></script>
     <title>Cronômetro Beatfellas</title>
     <style>
         body {
             font-family: Arial;
+        }
+
+        .cron_feedback {
+            margin: 20px;
+            font-size: xx-large;
+            font-family:Consolas;
         }
 
         input[type=text],
@@ -99,7 +106,7 @@
     <input placeholder="60" type="number" id="digitos" />
     <button class='green' onclick="Comando('Iniciar',digitos.value)">Iniciar</button>
     <button class='red' onclick="Comando('Limpar')">Limpar</button>
-    <div class="cron_feedback"></div>
+    <div class="cron_feedback">00</div>
     <h2>Configurações</h2>
 
     <div class="tab">
@@ -144,16 +151,7 @@
 
     <div id="configlogo" class="tabcontent">
         <h3>Logo</h3>
-        <select id='logochanger' onchange="Comando('Logo',this.value)">
-            <option value="logos/beatfellasH.png" selected>BeatFellas Horizontal</option>
-            <option value="logos/beatfellasV.png">BeatFellas Vertical</option>
-            <option value="logos/ligadobeat.png">Liga do Beat</option>
-            <option value="logos/nacional.png">Campeonato Nacional</option>
-            <option value="logos/copa.png">Copa do Beat</option>
-            <option value="logos/beatmaster.png">BeatMaster</option>
-            <option value="logos/beatmasterEX.png">BeatMaster Edição Especial</option>
-            <option value="logos/vidro.png">Batalha de Vidro</option>
-            <option value="logos/real.png">Real Beatbox</option>
+        <select id='logochanger' onchange="Comando('Logo', this.value);">
         </select>
         <button class="green" onclick="Comando('Logo', logochanger.value)">
             Alterar
@@ -274,6 +272,17 @@
                 alert("Cronometro não está aberto")
             }
         }
+
+        //ler os logos
+        const testFolder = './logos/';
+        const fs = require('fs');
+        const path = require("path");
+
+        fs.readdir(testFolder, (err, files) => {
+            files.forEach(file => {
+                $("#logochanger").append("<option value='logos/" + file + "'>" + file.split(".")[0] + "</option>")
+            });
+        });
     </script>
 </body>
 </html>
