@@ -1,4 +1,26 @@
-﻿@keyframes noise-anim {
+﻿.glitch::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    text-shadow: 1px 0 blue;
+    top: 0;
+    color: white;
+    overflow: hidden;
+    animation: noise-anim-2 15s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -1px 0 red;
+    top: 0;
+    color: white;
+    overflow: hidden;
+    animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim {
     0% {
         clip-path: inset(75% 0 13% 0);
     }
@@ -82,18 +104,6 @@
     100% {
         clip-path: inset(70% 0 16% 0);
     }
-}
-
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 2px;
-    text-shadow: -1px 0 red;
-    top: 0;
-    color: white;
-    background: black;
-    overflow: hidden;
-    animation: noise-anim 2s infinite linear alternate-reverse;
 }
 
 @keyframes noise-anim-2 {
@@ -182,14 +192,3 @@
     }
 }
 
-.glitch::before {
-    content: attr(data-text);
-    position: absolute;
-    left: -2px;
-    text-shadow: 1px 0 blue;
-    top: 0;
-    color: white;
-    background: black;
-    overflow: hidden;
-    animation: noise-anim-2 15s infinite linear alternate-reverse;
-}

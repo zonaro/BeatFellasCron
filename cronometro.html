@@ -6,7 +6,7 @@
     <script src="/jquery.timer.js"></script>
     <script src="/particles.min.js"></script>
 
-    <link href="/glitch.css" />
+    <link rel="stylesheet" type="text/css" href="glitch.css">
     <style>
         @font-face {
             font-family: 'Archive';
@@ -88,6 +88,7 @@
         }
 
         .digitos {
+            position: relative;
             font-size: 10vw;
             font-family: "The Led Display St";
         }
@@ -139,13 +140,13 @@
 
         <div class="nomes glitch">
             <div class="bottomleft nome">
-                <p class="bigname  " id="esquerda"></p>
+                <p class="bigname" id="esquerda"></p>
             </div>
             <div class="bottommiddle nome">
-                <p class="bigname  " id="meio"></p>
+                <p class="bigname" id="meio"></p>
             </div>
             <div class="bottomright nome">
-                <p class="bigname  " id="direita"></p>
+                <p class="bigname" id="direita"></p>
             </div>
         </div>
 
@@ -181,7 +182,7 @@
             function __Nome(nome, local) {
                 nome = nome || "";
                 $(local).text(nome)
-                $(local).data('text', nome)
+                $(local).attr('data-text', nome)
                 $(local).closest("div").css("display", nome == "" ? "none" : "block")
                 $(".nomes").css("display", "flex");
             }
@@ -282,7 +283,7 @@
             //fica vigiando o .digitos
             $("body").on('DOMSubtreeModified', ".digitos", function () {
                 let txt = $(this).text() || ""
-                $(this).data('text', txt);
+                $(this).attr('data-text', txt);
 
                 window.opener.document.querySelector(".cron_feedback").innerHTML = txt;
 
