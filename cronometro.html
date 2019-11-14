@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <script src="/jquery-3.4.0.min.js"></script>
-    <script src="/jquery.timer.js"></script>
-    <script src="/particles.min.js"></script>
+    <script src="jquery-3.4.0.min.js"></script>
+    <script src="jquery.timer.js"></script>
+    <script src="particles.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="glitch.css">
     <style>
@@ -91,6 +91,9 @@
             position: relative;
             font-size: 10vw;
             font-family: "The Led Display St";
+            width: auto;
+            display: table;
+            margin: 0 auto;
         }
 
         .eq svg {
@@ -134,8 +137,8 @@
     <div class="contents">
 
         <div class="middle">
-            <img src="/logos/beatfellasH.png" alt="" class="logo smooth" />
-            <p class="digitos glitch smooth"></p>
+            <img src="logos/beatfellas horizontal.png" alt="" class="logo smooth" />
+            <p class="digitos glitch smooth">00</p>
         </div>
 
         <div class="nomes glitch">
@@ -173,7 +176,7 @@
             let ct = null
 
             function __TrocaLogo(nome) {
-                nome = nome || "beatfellasH.png"
+                nome = nome || "beatfellas horizontal.png"
                 $(".logo").fadeOut(500, function () {
                     $(".logo ").attr('src', nome);
                 }).fadeIn(1000)
@@ -233,7 +236,7 @@
             function Iniciar(sec) {
                 sec = sec || 60
                 Limpar();
-                __Exibir("block")
+                __Exibir("table")
                 ct = $(".digitos").timer({
                     countdown: true,
                     duration: sec + "s", // The number of seconds to start the timer from
@@ -248,7 +251,7 @@
             }
 
             function __Exibir(noneBlock) {
-                noneBlock = noneBlock || "block"
+                noneBlock = noneBlock || "table"
                 $(".digitos").css("display", noneBlock);
             }
 
