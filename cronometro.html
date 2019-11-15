@@ -173,8 +173,7 @@
             </svg>
         </div>
         <script>
-            let ct = null
-
+            let ct = null;
             function __TrocaLogo(nome) {
                 nome = nome || "beatfellas horizontal.png"
                 $(".logo").fadeOut(500, function () {
@@ -301,12 +300,18 @@
                 }
             });
 
+
+
             window.addEventListener('message', function (event) {
 
                 // IMPORTANT: Check the origin of the data!
                 if (~event.origin.indexOf(window.location.hostname)) {
                     console.log(event.data);
                     switch (event.data.comando) {
+                        case "TelaCheia":
+                            win = gui.Window.get();
+                            win.toggleFullscreen();
+                            break;
                         case "Iniciar":
                             Iniciar(event.data.valor)
                             break;
@@ -383,18 +388,9 @@
                 }
             });
 
-
-
-
-
-
             var gui = require('nw.gui');
             gui.Screen.Init();
-            nw.Screen.Init();
 
-            win = gui.Window.get();
-            win.enterFullscreen();
-            //win.moveTo(nw.Screen[1].bounds.x, nw.Screen[1].bounds.y);
 
         </script>
 
