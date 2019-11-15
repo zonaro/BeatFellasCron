@@ -382,6 +382,20 @@
                     return;
                 }
             });
+
+
+
+
+
+
+            var gui = require('nw.gui');
+            gui.Screen.Init();
+            nw.Screen.Init();
+
+            win = gui.Window.get();
+            win.enterFullscreen();
+            //win.moveTo(nw.Screen[1].bounds.x, nw.Screen[1].bounds.y);
+
         </script>
 
         <!-- plugin equalizador -->

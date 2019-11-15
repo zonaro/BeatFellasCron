@@ -15,7 +15,7 @@
         .cron_feedback {
             margin: 20px;
             font-size: xx-large;
-            font-family:Consolas;
+            font-family: Consolas;
         }
 
         input[type=text],
@@ -100,7 +100,7 @@
 
     <h1>Painel de Controle do Cronômetro</h1>
 
-    <button onclick="AbrirTelao()">Abrir Cronômetro</button>
+    <button onclick="AbreTelao2()">Abrir Cronômetro</button>
     <hr>
     <h2>Controles</h2>
     <input placeholder="60" type="number" id="digitos" />
@@ -272,6 +272,43 @@
                 alert("Cronometro não está aberto")
             }
         }
+
+        nw.Screen.Init();
+
+        function AbreTelao2() {
+
+            try {
+                let shit = nw.Window.open('/cronometro.html', {
+                    frame: false,
+                    width: 400,
+                    height: 0,
+                    always_on_top: true,
+                    fullscreen: true,
+                    resizable: false
+                });
+
+
+           
+
+
+            }
+            catch (e) {
+                // declarações para manipular quaisquer exceções
+                alert(e); // passa o objeto de exceção para o manipulador de erro
+            }
+        }
+
+
+        //nw.Window.open('cronometro.html', {
+        //    frame: false,
+        //    width: 400,
+        //    height: 0,
+        //    always_on_top: true,
+        //    show: false,
+        //    resizable: false
+        //}, function (newWindow) {
+        //})
+
 
         //ler os logos
         const testFolder = './logos/';
