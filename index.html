@@ -132,17 +132,17 @@
             </thead>
             <tbody>
                 <tr id="inputs_nomes">
-                    <td><input type="text" oninput="Comando('NomeEsquerda',this.value)"></td>
-                    <td> <input type="text" oninput="Comando('NomeMeio',this.value)"></td>
-                    <td><input type="text" oninput="Comando('NomeDireita',this.value)"></td>
+                    <td><input type="text" id="esquerda" onchange="Comando('NomeEsquerda',this.value)" oninput="Comando('NomeEsquerda',this.value)"></td>
+                    <td><input type="text" id="meio" onchange="Comando('NomeMeio',this.value)" oninput="Comando('NomeMeio',this.value)"></td>
+                    <td><input type="text" id="direita" onchange="Comando('NomeDireita',this.value)" oninput="Comando('NomeDireita',this.value)"></td>
                 </tr>
             </tbody>
         </table>
 
-        <button class="red" onclick="Comando('LimparNomes');">Limpar Nomes</button><br />
-        <button class="red" onclick="Comando('InverterDireitaEsquerda');">Inverter Direita ↔ Esquerda</button>
-        <button class="red" onclick="Comando('InverterDireitaMeio');">Inverter Direita ↔ Meio</button>
-        <button class="red" onclick="Comando('InverterEsquerdaMeio');">Inverter Esquerda ↔ Meio</button>
+        <button class="red" onclick="LimparNomes()">Limpar Nomes</button><br />
+        <button class="red" onclick="InverterDireitaEsquerda()">Inverter Direita ↔ Esquerda</button>
+        <button class="red" onclick="InverterDireitaMeio()">Inverter Direita ↔ Meio</button>
+        <button class="red" onclick="InverterEsquerdaMeio()">Inverter Esquerda ↔ Meio</button>
         <hr />
         <label>
             Tamanho da Fonte
@@ -272,6 +272,38 @@
             } else {
                 alert("Cronometro não está aberto")
             }
+        }
+
+        function LimparNomes() {
+            Comando('LimparNomes');
+            $("#esquerda, #direita, #meio").val("");
+        }
+
+        function InverterDireitaEsquerda() {
+            let nome1 = $("#direita").val() || "";
+            let nome2 = $("#esquerda").val() || "";
+            $("#direita").val(nome2);
+            $("#esquerda").val(nome1);
+            $("#direita, #esquerda, #meio").trigger('change');
+        }
+
+        function InverterDireitaMeio() {
+            let nome1 = $("#direita").val() || "";
+            let nome2 = $("#meio").val() || "";
+            $("#direita").val(nome2);
+            $("#meio").val(nome1);
+            $("#direita, #esquerda, #meio").trigger('change');
+
+
+        }
+
+        function InverterEsquerdaMeio() {
+            let nome1 = $("#esquerda").val() || "";
+            let nome2 = $("#meio").val() || "";
+            $("#esquerda").val(nome2);
+            $("#meio").val(nome1);
+            $("#direita, #esquerda, #meio").trigger('change');
+
         }
 
 
