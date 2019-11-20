@@ -189,26 +189,7 @@
                 $(".nomes").css("display", "flex");
             }
 
-            function InverterDireitaEsquerda() {
-                let nome1 = $("#direita").text();
-                let nome2 = $("#esquerda").text();
-                NomeDireita(nome2);
-                NomeEsquerda(nome1);
-            }
-
-            function InverterDireitaMeio() {
-                let nome1 = $("#direita").text();
-                let nome2 = $("#meio").text();
-                NomeDireita(nome2);
-                NomeMeio(nome1);
-            }
-
-            function InverterEsquerdaMeio() {
-                let nome1 = $("#esquerda").text();
-                let nome2 = $("#meio").text();
-                NomeEsquerda(nome2);
-                NomeMeio(nome1);
-            }
+           
 
             function NomeDireita(nome) {
                 __Nome(nome, "#direita")
@@ -225,8 +206,7 @@
             function LimparNomes() {
                 NomeDireita()
                 NomeEsquerda()
-                NomeMeio()
-                $("#esquerda, #direita, #meio").val("");
+                NomeMeio()              
                 $(".nomes").css("display", "none");
 
             }
