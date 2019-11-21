@@ -111,18 +111,19 @@
     <h2>Configurações</h2>
 
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'nomes')">Editar Participantes</button>
+        <button class="tablinks" onclick="openTab(event, 'nomes');LoadNames();">Editar Participantes</button>
         <button class="tablinks" onclick="openTab(event, 'equalizador')">
             Configurações de Equalizador
             Visual
         </button>
-        <button class="tablinks" onclick="openTab(event, 'configlogo')">Configurações de Logo</button>
+        <button class="tablinks" onclick="openTab(event, 'configlogo');LoadLogos()">Configurações de Logo</button>
         <button class="tablinks" onclick="openTab(event, 'planodefundo')">Configurações de Plano de Fundo</button>
     </div>
 
     <div id="nomes" class="tabcontent">
         <h3>Nomes</h3>
         <datalist id="beatboxers">
+            <option value="TESTE" />
         </datalist>
         <table class="table">
             <thead>
@@ -134,9 +135,9 @@
             </thead>
             <tbody>
                 <tr id="inputs_nomes">
-                    <td><input list="beatboxers" type="text" id="esquerda" onchange="Comando('NomeEsquerda',this.value)" oninput="Comando('NomeEsquerda',this.value)"></td>
-                    <td><input list="beatboxers" type="text" id="meio" onchange="Comando('NomeMeio',this.value)" oninput="Comando('NomeMeio',this.value)"></td>
-                    <td><input list="beatboxers" type="text" id="direita" onchange="Comando('NomeDireita',this.value)" oninput="Comando('NomeDireita',this.value)"></td>
+                    <td><input list="beatboxers" autocomplete="on" type="text" id="esquerda" onchange="Comando('NomeEsquerda',this.value)" oninput="Comando('NomeEsquerda',this.value)"></td>
+                    <td><input list="beatboxers" autocomplete="on" type="text" id="meio" onchange="Comando('NomeMeio',this.value)" oninput="Comando('NomeMeio',this.value)"></td>
+                    <td><input list="beatboxers" autocomplete="on" type="text" id="direita" onchange="Comando('NomeDireita',this.value)" oninput="Comando('NomeDireita',this.value)"></td>
                 </tr>
             </tbody>
         </table>
@@ -215,6 +216,11 @@
     </div>
 
     <script>
+
+
+
+
+
 
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -308,29 +314,17 @@
 
         }
 
-        //ler os logos
+        var fs = require('fs');
 
-        const fs = require('fs');
-        const path = require("path");
-        es = require('event-stream'),
-            os = require('os');
 
         function LoadNames() {
-            var s = fs.createReadStream('./beatboxers.txt')
-                .pipe(es.split())
-                .pipe(es.mapSync(function (line) {
-                    //pause the readstream
-                    s.pause();
-                    jQuery("#beatboxers").append("<option value='" + line + "' />")
-                    s.resume();
-                })
-                    .on('error', function (err) {
-                        console.log('Error:', err);
-                    })
-                    .on('end', function () {
-                        console.log('Finish reading.');
-                    })
-                );
+            $("#beatboxers").html("");
+            fs.readFile("beatboxers.txt", function (err, lines) {
+                lines.toString().split('\n').forEach(line => {
+                    alert(line);
+                    $("#beatboxers").append("<option>" + line + "</option>");
+                });
+            });
         }
 
         function LoadLogos() {
@@ -340,9 +334,6 @@
                 });
             });
         }
-
-
-
 
 
         LoadNames();
