@@ -4,9 +4,10 @@
 <head>
     <script src="jquery-3.4.0.min.js"></script>
     <script src="jquery.timer.js"></script>
-    <script src="particles.min.js"></script>
+
 
     <link rel="stylesheet" type="text/css" href="glitch.css">
+    <link rel="stylesheet" type="text/css" href="shake.css">
     <style>
         @font-face {
             font-family: 'Archive';
@@ -22,6 +23,12 @@
             font-style: normal;
         }
 
+        #particles-js {
+            z-index: -99;
+            width: 100%;
+            height: 100%;
+        }
+
         body,
         html {
             height: 100%;
@@ -30,6 +37,7 @@
             font-family: 'Archive';
             text-align: center;
             overflow: hidden;
+            cursor: none;
         }
 
         .logo {
@@ -134,6 +142,7 @@
 
 <body>
 
+
     <div class="contents">
 
         <div class="middle">
@@ -141,19 +150,19 @@
             <p class="digitos glitch smooth">00</p>
         </div>
 
-        <div class="nomes glitch">
-            <div class="bottomleft nome">
+        <div class="nomes">
+            <div class="bottomleft nome glitch">
                 <p class="bigname" id="esquerda"></p>
             </div>
-            <div class="bottommiddle nome">
+            <div class="bottommiddle nome glitch">
                 <p class="bigname" id="meio"></p>
             </div>
-            <div class="bottomright nome">
+            <div class="bottomright nome glitch">
                 <p class="bigname" id="direita"></p>
             </div>
         </div>
 
-        <div class="eq">
+        <div class="eq shake-opacity">
 
             <svg preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -189,7 +198,7 @@
                 $(".nomes").css("display", "flex");
             }
 
-           
+
 
             function NomeDireita(nome) {
                 __Nome(nome, "#direita")
@@ -206,7 +215,7 @@
             function LimparNomes() {
                 NomeDireita()
                 NomeEsquerda()
-                NomeMeio()              
+                NomeMeio()
                 $(".nomes").css("display", "none");
 
             }
@@ -242,8 +251,8 @@
             }
 
             function Piscar() {
-                $(".digitos").fadeToggle(500)
-                $(".digitos").fadeToggle(500)
+                $(".digitos").fadeToggle(20).fadeToggle(20)
+              
 
             }
 
@@ -357,6 +366,12 @@
                         case "InverterEsquerdaMeio":
                             InverterEsquerdaMeio();
                             break;
+                        case "Restart":
+                            Restart();
+                            break;
+                        case "Piscar":
+                            Piscar();
+                            break;
                         default:
                             console.warn("Nada executado");
                             break;
@@ -371,11 +386,13 @@
             var gui = require('nw.gui');
             gui.Screen.Init();
 
-
+           
         </script>
 
         <!-- plugin equalizador -->
         <script src="eq.js"></script>
+
+
     </div>
 </body>
 </html>

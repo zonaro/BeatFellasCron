@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/jquery-3.4.0.min.js"></script>
+
     <title>Cronômetro Beatfellas</title>
     <style>
         body {
@@ -107,6 +108,7 @@
     <h1>Painel de Controle do Cronômetro</h1>
 
     <button onclick="AbrirTelao()">Abrir Cronômetro</button>
+    <button onclick="Comando('Restart')">Reiniciar Cronômetro</button>
     <button onclick="Comando('TelaCheia')">Tela Cheia</button>
     <hr>
     <h2>Controles</h2>
@@ -133,15 +135,19 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Esquerda  <button class="off" onclick="InverterEsquerdaMeio();">↔</button></th>
-                    <th>Meio  <button class="off" onclick="InverterDireitaMeio();">↔</button></th>
+                    <th>Esquerda</th>
+                    <th></th>
+                    <th>Meio</th>
+                    <th></th>
                     <th>Direita</th>
                 </tr>
             </thead>
             <tbody>
                 <tr id="inputs_nomes">
                     <td><input list="beatboxers" autocomplete="on" type="text" id="esquerda" onchange="Comando('NomeEsquerda',this.value)" oninput="Comando('NomeEsquerda',this.value)"></td>
+                    <td><button class="off" onclick="InverterEsquerdaMeio();">↔</button></td>
                     <td><input list="beatboxers" autocomplete="on" type="text" id="meio" onchange="Comando('NomeMeio',this.value)" oninput="Comando('NomeMeio',this.value)"></td>
+                    <td><button class="off" onclick="InverterDireitaMeio();">↔</button></td>
                     <td><input list="beatboxers" autocomplete="on" type="text" id="direita" onchange="Comando('NomeDireita',this.value)" oninput="Comando('NomeDireita',this.value)"></td>
                 </tr>
             </tbody>
@@ -339,6 +345,8 @@
             LoadNames();
             LoadLogos();
             AbrirTelao();
+
+            
 
         });
 

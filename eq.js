@@ -7,10 +7,7 @@ window.onload = function () {
     var path;
     var report = 0;
 
-    var soundAllowed = function (stream) {
-        //Audio stops listening in FF without // window.persistAudioStream = stream;
-        //https://bugzilla.mozilla.org/show_bug.cgi?id=965483
-        //https://support.mozilla.org/en-US/questions/984179
+    var soundAllowed = function (stream) { 
         window.persistAudioStream = stream;
         var audioContent = new AudioContext();
         var audioStream = audioContent.createMediaStreamSource(stream);
@@ -33,25 +30,19 @@ window.onload = function () {
             analyser.getByteFrequencyData(frequencyArray);
             var adjustedLength;
             for (var i = 0; i < 255; i++) {
-                adjustedLength = Math.floor(frequencyArray[i]) - (Math.floor(frequencyArray[i]) %
-                    5);
+                adjustedLength = Math.floor(frequencyArray[i]) - (Math.floor(frequencyArray[i]) % 5);
                 paths[i].setAttribute('d', 'M ' + (i) + ',255 l 0,-' + adjustedLength);
             }
 
-        }
+        };
         doDraw();
-    }
+    };
 
     var soundNotAllowed = function (error) {
-
         console.log(error);
-    }
+    };
 
-    /*window.navigator = window.navigator || {};
-    /*navigator.getUserMedia =  navigator.getUserMedia       ||
-                              navigator.webkitGetUserMedia ||
-                              navigator.mozGetUserMedia    ||
-                              null;*/
+ 
     navigator.getUserMedia({
         audio: true
     }, soundAllowed, soundNotAllowed);
