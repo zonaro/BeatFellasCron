@@ -122,6 +122,8 @@
 
     <div id="nomes" class="tabcontent">
         <h3>Nomes</h3>
+        <datalist id="beatboxers">
+        </datalist>
         <table class="table">
             <thead>
                 <tr>
@@ -132,9 +134,9 @@
             </thead>
             <tbody>
                 <tr id="inputs_nomes">
-                    <td><input type="text" id="esquerda" onchange="Comando('NomeEsquerda',this.value)" oninput="Comando('NomeEsquerda',this.value)"></td>
-                    <td><input type="text" id="meio" onchange="Comando('NomeMeio',this.value)" oninput="Comando('NomeMeio',this.value)"></td>
-                    <td><input type="text" id="direita" onchange="Comando('NomeDireita',this.value)" oninput="Comando('NomeDireita',this.value)"></td>
+                    <td><input list="beatboxers" type="text" id="esquerda" onchange="Comando('NomeEsquerda',this.value)" oninput="Comando('NomeEsquerda',this.value)"></td>
+                    <td><input list="beatboxers" type="text" id="meio" onchange="Comando('NomeMeio',this.value)" oninput="Comando('NomeMeio',this.value)"></td>
+                    <td><input list="beatboxers" type="text" id="direita" onchange="Comando('NomeDireita',this.value)" oninput="Comando('NomeDireita',this.value)"></td>
                 </tr>
             </tbody>
         </table>
@@ -306,17 +308,45 @@
 
         }
 
-
         //ler os logos
-        const testFolder = './logos/';
+
         const fs = require('fs');
         const path = require("path");
+        es = require('event-stream'),
+            os = require('os');
 
-        fs.readdir(testFolder, (err, files) => {
-            files.forEach(file => {
-                $("#logochanger").append("<option value='logos/" + file + "'>" + file.split(".")[0] + "</option>")
+        function LoadNames() {
+            var s = fs.createReadStream('./beatboxers.txt')
+                .pipe(es.split())
+                .pipe(es.mapSync(function (line) {
+                    //pause the readstream
+                    s.pause();
+                    jQuery("#beatboxers").append("<option value='" + line + "' />")
+                    s.resume();
+                })
+                    .on('error', function (err) {
+                        console.log('Error:', err);
+                    })
+                    .on('end', function () {
+                        console.log('Finish reading.');
+                    })
+                );
+        }
+
+        function LoadLogos() {
+            fs.readdir('./logos/', (err, files) => {
+                files.forEach(file => {
+                    $("#logochanger").append("<option value='logos/" + file + "'>" + file.split(".")[0] + "</option>")
+                });
             });
-        });
+        }
+
+
+
+
+
+        LoadNames();
+        LoadLogos();
     </script>
 </body>
 </html>
