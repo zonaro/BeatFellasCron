@@ -1,0 +1,3 @@
+[1114/195855.504:ERROR:main_dll_loader_win.cc(146)] Failed to load NW DLL from C:\SVN\BeatFellasCron\trunk\nw.dll: Não foi possível encontrar o módulo especificado. (0x7E)
+[1114/195901.007:ERROR:main_dll_loader_win.cc(146)] Failed to load NW DLL from C:\SVN\BeatFellasCron\trunk\nw.dll: Não foi possível encontrar o módulo especificado. (0x7E)
+[1114/195906.195:ERROR:main_dll_loader_win.cc(146)] Failed to load NW DLL from C:\SVN\BeatFellasCron\trunk\nw.dll: Não foi possível encontrar o módulo especificado. (0x7E)
