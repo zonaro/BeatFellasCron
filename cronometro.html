@@ -66,6 +66,8 @@
             word-break: break-word;
         }
 
+
+
         .bottomleft .bigname {
             text-align: left;
         }
@@ -95,13 +97,17 @@
             margin: 2vw;
         }
 
-        .digitos {
+        .digitos, .mensagem {
             position: relative;
             font-size: 10vw;
             font-family: "The Led Display St";
             width: auto;
             display: table;
             margin: 0 auto;
+        }
+
+        .mensagem {
+            font-size: 6vw !important;
         }
 
         .eq svg {
@@ -147,10 +153,12 @@
 
         <div class="middle">
             <img src="logos/beatfellas horizontal.png" alt="" class="logo" />
-            <p class="digitos glitch">00</p>
+            <p class="digitos glitch shake-opacity">00</p>
+            <p class="mensagem"></p>
         </div>
 
         <div class="nomes">
+
             <div class="bottomleft nome">
                 <p class="bigname" id="esquerda"></p>
             </div>
@@ -222,6 +230,7 @@
 
             /// Inicia o cronometro com o tempo especificado
             function Iniciar(sec) {
+                $(".mensagem").hide();
                 sec = sec || 60
                 Limpar();
                 __Exibir("table")
@@ -248,10 +257,11 @@
                     ct.timer('remove')
                 }
                 __Exibir("none");
+
             }
 
             function Piscar() {
-                $(".digitos").fadeToggle(100).fadeToggle(100).fadeToggle(100).fadeToggle(100);             
+                $(".digitos, .mensagem").fadeToggle(100).fadeToggle(100).fadeToggle(100).fadeToggle(100);
 
             }
 
@@ -278,16 +288,32 @@
                 window.opener.document.querySelector(".cron_feedback").innerHTML = txt;
 
                 if (txt !== "") {
-
+                    __Exibir("table");
                     let ii = parseInt(txt);
+                    if (ii % 15 == 0) {
+                        $(".digitos").addClass('shake-constant');
+                    } else {
+                         $(".digitos").removeClass('shake-constant');
+                    }
                     if (ii <= 10) {
                         $(".digitos").css("color", "red");
                     } else {
                         $(".digitos").css("color", lastcolor);
                     }
-                    if (ii <= 0 && window.opener.document.querySelector("#loopcron").checked) {
-                        window.opener.document.querySelector("#startcron").click();
+                    if (ii <= 0) {
+                        __Exibir("none");
+                        $(".mensagem").text(window.opener.document.querySelector("#message_end").value || "").fadeIn();
+                        setTimeout(function () {
+                            if (window.opener.document.querySelector("#loopcron").checked) {
+                                window.opener.document.querySelector("#startcron").click();
+                            } else {
+                                $(".mensagem").fadeOut();
+                            }
+                        }, 3000);
+
                     }
+                } else {
+                    __Exibir("none");
                 }
             });
 
@@ -358,6 +384,7 @@
                             lastcolor = event.data.valor;
                             $(".eq").css("color", lastcolor);
                             $(".bigname").css("color", lastcolor);
+                            $(".mensagem").css("color", lastcolor);
                             break;
                         case "InverterDireitaEsquerda":
                             InverterDireitaEsquerda();
@@ -391,7 +418,7 @@
             var gui = require('nw.gui');
             gui.Screen.Init();
 
-           
+
         </script>
 
         <!-- plugin equalizador -->

@@ -30,18 +30,24 @@
                     <p>
                         <div class="input-group mb-2 mr-sm-2">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">T</div>
+                                <div class="input-group-text">Tempo</div>
                             </div>
                             <input class="form-control" placeholder="60" type="number" id="digitos">
                             <div class="input-group-append">
                                 <button class="btn btn-success" id="startcron" role="button" onclick="Comando('Iniciar',digitos.value)">Iniciar</button>
-                                <button class="btn btn-danger" role="button" onclick="Comando('Limpar')">Limpar</button>
+                                <button class="btn btn-danger" role="button" onclick="Comando('Limpar')">Parar</button>
 
                             </div>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" id="loopcron" type="checkbox">
                             <label class="form-check-label" for="loopcron">Manter Cronômetro em Loop</label>
+                        </div>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Mensagem de Finalização</div>
+                            </div>
+                            <input class="form-control" placeholder="00" type="text" id="message_end">
                         </div>
                     </p>
                     <h4>Tela</h4>
