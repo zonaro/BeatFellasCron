@@ -308,7 +308,7 @@
                             } else {
                                 $(".mensagem").fadeOut();
                             }
-                        }, 3000);
+                        }, (window.opener.document.querySelector("#cooldown").value * 1000) || 3000);
 
                     }
                 } else {
