@@ -1,9 +1,9 @@
 ﻿.glitch::before {
     content: attr(data-text);
     position: absolute;
-    left: -2px;
+    left: -8px;
     text-shadow: 1px 0 blue;
-    top: 0;
+    top: -1;
     color: white;
     overflow: hidden;
     animation: noise-anim-2 15s infinite linear alternate-reverse;
@@ -13,8 +13,8 @@
     content: attr(data-text);
     position: absolute;
     left: 2px;
-    text-shadow: -1px 0 red;
-    top: 0;
+    text-shadow: -1px 0 #c50000;
+    top: 1;
     color: white;
     overflow: hidden;
     animation: noise-anim 2s infinite linear alternate-reverse;

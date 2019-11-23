@@ -151,13 +151,13 @@
         </div>
 
         <div class="nomes">
-            <div class="bottomleft nome glitch">
+            <div class="bottomleft nome">
                 <p class="bigname" id="esquerda"></p>
             </div>
-            <div class="bottommiddle nome glitch">
+            <div class="bottommiddle nome ">
                 <p class="bigname" id="meio"></p>
             </div>
-            <div class="bottomright nome glitch">
+            <div class="bottomright nome ">
                 <p class="bigname" id="direita"></p>
             </div>
         </div>
@@ -371,6 +371,9 @@
                             break;
                         case "Piscar":
                             Piscar();
+                            break;
+                        case "Glitch":
+                            $(".digitos").toggleClass('glitch');
                             break;
                         default:
                             console.warn("Nada executado");
