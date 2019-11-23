@@ -338,6 +338,7 @@
         }
 
         function LoadLogos() {
+            $("#logochanger").html("");
             fs.readdir('./logos/', (err, files) => {
                 files.forEach(file => {
                     $("#logochanger").append("<option value='logos/" + file + "'>" + file.split(".")[0] + "</option>")
