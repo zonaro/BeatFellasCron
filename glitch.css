@@ -1,23 +1,28 @@
 ﻿.glitch::before {
     content: attr(data-text);
     position: absolute;
-    left: -8px;
-    text-shadow: 1px 0 blue;
-    top: -1;
-    color: white;
+    left: -15px;
+    text-shadow: 8px 0 blue;
+    top: 0;
+    color: #288401;
     overflow: hidden;
     animation: noise-anim-2 15s infinite linear alternate-reverse;
+    z-index: -1;
+    opacity:0.4
+    
 }
 
 .glitch::after {
     content: attr(data-text);
     position: absolute;
-    left: 2px;
-    text-shadow: -1px 0 #c50000;
-    top: 1;
-    color: white;
+    left: 15px;
+    text-shadow: -8px 0 #c50000;
+    top: 0;
+    color: #a58c01;
     overflow: hidden;
     animation: noise-anim 2s infinite linear alternate-reverse;
+    z-index: -1;
+    opacity: 0.4
 }
 
 @keyframes noise-anim {
@@ -192,3 +197,6 @@
     }
 }
 
+
+
+ 
