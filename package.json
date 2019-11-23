@@ -1,4 +1,4 @@
 {
-  "name": "BeatFellasCron",
-  "main": "index.html"
+  "name": "Cronômetro BeatFellas",
+  "main": "app/index.html"
 }
