@@ -164,7 +164,7 @@
 
         <div class="eq shake-opacity">
 
-            <svg preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            <svg preserveAspectRatio="none" id="visualizer" style="display:none;" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
                     <mask id="mask">
@@ -251,8 +251,7 @@
             }
 
             function Piscar() {
-                $(".digitos").fadeToggle(20).fadeToggle(20)
-              
+                $(".digitos").fadeToggle(100).fadeToggle(100).fadeToggle(100).fadeToggle(100);             
 
             }
 
@@ -285,6 +284,9 @@
                         $(".digitos").css("color", "red");
                     } else {
                         $(".digitos").css("color", lastcolor);
+                    }
+                    if (ii <= 0 && window.opener.document.querySelector("#loopcron").checked) {
+                        window.opener.document.querySelector("#startcron").click();
                     }
                 }
             });
