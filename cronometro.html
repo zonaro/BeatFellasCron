@@ -153,7 +153,7 @@
 
         <div class="middle">
             <img src="logos/beatfellas horizontal.png" alt="" class="logo" />
-            <p class="digitos glitch shake-opacity">00</p>
+            <p class="digitos  shake-little shake-opacity">00</p>
             <p class="mensagem"></p>
         </div>
 
@@ -260,10 +260,7 @@
 
             }
 
-            function Piscar() {
-                $(".digitos, .mensagem").fadeToggle(100).fadeToggle(100).fadeToggle(100).fadeToggle(100);
 
-            }
 
             function Restart() {
                 location.href = location.href + ""
@@ -290,11 +287,13 @@
                 if (txt !== "") {
                     __Exibir("table");
                     let ii = parseInt(txt);
-                    if (ii % 15 == 0) {
-                        $(".digitos").addClass('shake-constant');
+
+                    if (ii % Math.floor(Math.random() * 10) == 4) {
+                        $(".digitos").addClass('shake-constant glitch')
                     } else {
-                         $(".digitos").removeClass('shake-constant');
+                        $(".digitos").removeClass('shake-constant glitch')
                     }
+
                     if (ii <= 10) {
                         $(".digitos").css("color", "red");
                     } else {
@@ -398,12 +397,7 @@
                         case "Restart":
                             Restart();
                             break;
-                        case "Piscar":
-                            Piscar();
-                            break;
-                        case "Glitch":
-                            $(".digitos").toggleClass('glitch');
-                            break;
+
                         default:
                             console.warn("Nada executado");
                             break;
