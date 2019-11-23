@@ -18,6 +18,7 @@ Gustav Key
 Ian
 Issao
 Jojo
+K1
 K2
 Kaizonaro
 Kase
@@ -31,7 +32,7 @@ Lex
 Math
 Mautari
 Mycca
-N0.Bit
+N0.bit
 Nandob
 Nico
 Nogxs
