@@ -2,11 +2,17 @@
   "beatboxer":[
      {
         "id":1,
-        "name":"Kaizonaro"
+        "name":"Kaizonaro",
+        "mainstyle":"Dubstep"
      },
      {
         "id":2,
-        "name":"Mautari"
+        "name":"Mautari",
+       "mainstyle":"House"
+     }, {
+        "id":3,
+        "name":"TVS",
+       "mainstyle":"Rap/Hip-Hop"
      }
   ]
 }
