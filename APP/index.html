@@ -7,7 +7,6 @@
     <script src="bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="bootstrap.css" type="text/css" />
     <title>Cronômetro Beatfellas</title>
-
 </head>
 <body>
     <datalist id="beatboxers">
@@ -40,7 +39,6 @@
                             <div class="input-group-append">
                                 <button class="btn btn-success" id="startcron" role="button" onclick="Comando('Iniciar',digitos.value)">Iniciar</button>
                                 <button class="btn btn-danger" role="button" onclick="Comando('Limpar')">Parar</button>
-
                             </div>
                         </div>
                         <div class="form-check form-check-inline">
@@ -52,7 +50,6 @@
                                 <div class="input-group-text">Mensagem de Finalização</div>
                             </div>
                             <input class="form-control" list="mensagens" autocomplete="on" placeholder="Sem mensagem" type="text" id="message_end">
-                             
                         </div>
                         <div class="input-group mb-2 mr-sm-2">
                             <div class="input-group-prepend">
@@ -68,7 +65,6 @@
                         <button class="btn btn-secondary" href="#" role="button" onclick="Comando('Restart')">Reiniciar Telão</button>
                     </p>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -76,7 +72,7 @@
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-participante-tab" data-toggle="tab" href="#nav-participante" role="tab" aria-controls="nav-participante" aria-selected="true">Beatboxers</a>
-                            <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo">Logo da Batalha</a>
+                            <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo">Logotipo da Batalha</a>
                             <a class="nav-item nav-link" id="nav-eq-tab" data-toggle="tab" href="#nav-eq" role="tab" aria-controls="nav-eq">Cores e Efeitos</a>
                         </div>
                     </nav>
@@ -108,7 +104,6 @@
 
                                             <label for="input_fontsize">Tamanho da Fonte</label>
                                             <input class="form-control-range" onchange="Comando('NomeSize',this.value)" id="input_fontsize" step="0.1" min="1" max="10" type="range" value="4">
-
                                         </div>
                                     </div>
                                 </div>
@@ -118,7 +113,7 @@
                             <p>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-lg-6 col-sm-12">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">Logo</div>
@@ -154,7 +149,6 @@
                                             Contraste
                                             <input class="form-control-range" onchange="AplicarFiltros()" id="input_contrast" min="-1" max="200" type="range" value="-1">
                                         </label>
-
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -180,14 +174,10 @@
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input onoff" id="onoffeq" type="checkbox" onchange="Comando('Eqv',this.checked)">
                                                 <label class="form-check-label" for="onoffeq">Ativar/Desativar Equalizador Visual</label>
-
                                             </div>
                                         </div>
-
-
                                     </div>
                                     <div class="row">
-
 
                                         <label class="col-md-3">
                                             Cor 1 - Parte baixa <input class="form-control" type="color" onchange="Comando('Cor_Eq1',this.value)" />
@@ -205,13 +195,27 @@
                                     <div class="row">
                                         <label class="col-md-5">
                                             Cor do Fundo  <input class="form-control corfundo" type="color" value="#000000" onchange="Comando('CorBG',this.value)">
-
                                         </label>
                                         <label class="col-md-5">
                                             Cor da Fonte <input class="form-control corfonte" type="color" value="#ffffff" onchange="Comando('CorFonte',this.value)">
                                         </label>
                                         <div class="col-md-2">
                                             <button class="btn btn-warning" onclick="InverterCorFundoFonte()">Inverter Cores do Fundo/Fonte</button>
+                                        </div>
+                                    </div>
+                                    <HR />
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">Imagem de Plano de Fundo</div>
+                                                </div>
+                                                <select class="form-control" id="bgchanger" onchange="Comando('Bg', this.value);"></select>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-success" onclick="Comando('Bg', bgchanger.value);">Ligar</button>
+                                                    <button class="btn btn-danger" onclick="Comando('Bg', this.value);">Desligar</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -221,9 +225,7 @@
                 </div>
             </div>
             <hr>
-
         </div> <!-- /container -->
-
     </main>
 
     <footer class="container">
@@ -237,8 +239,6 @@
         let telao = null;
 
         const fs = require('fs');
-
-
 
         function AbrirTelao() {
             if (telao) {
@@ -289,15 +289,12 @@
             $("#esquerda, #direita, #meio").val("");
         }
 
-
-
         function InverterDireitaMeio() {
             let nome1 = $("#direita").val() || "";
             let nome2 = $("#meio").val() || "";
             $("#direita").val(nome2);
             $("#meio").val(nome1);
             $("#direita, #esquerda, #meio").trigger('change');
-
 
         }
 
@@ -309,8 +306,6 @@
             $("#direita, #esquerda, #meio").trigger('change');
 
         }
-
-
 
         function LoadNames() {
             $("#beatboxers").html("");
@@ -330,6 +325,15 @@
             });
         }
 
+        function LoadBG() {
+            $("#bgchanger").html("");
+            fs.readdir('./APP/BG/', (err, files) => {
+                files.forEach(file => {
+                    $("#bgchanger").append("<option value='/app/bg/" + file + "'>" + file.split(".")[0] + "</option>")
+                });
+            });
+        }
+
         function InverterCorFundoFonte() {
             let cor1 = $(".corfundo").val() || "";
             let cor2 = $(".corfonte").val() || "";
@@ -341,10 +345,9 @@
         $(document).ready(function () {
             LoadNames();
             LoadLogos();
+            LoadBG();
             AbrirTelao();
         });
-
-
     </script>
 </body>
 </html>

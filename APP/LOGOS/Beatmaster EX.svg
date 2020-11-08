@@ -26,14 +26,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.929653"
-     inkscape:cx="322.23617"
+     inkscape:cx="123.77502"
      inkscape:cy="133.05442"
      inkscape:document-units="mm"
      inkscape:current-layer="g113"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
+     inkscape:window-width="2486"
+     inkscape:window-height="1057"
+     inkscape:window-x="66"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      fit-margin-top="0"
@@ -65,7 +65,10 @@
          id="g113">
         <g
            style="fill:#ffff00"
-           id="g108">
+           id="g108"
+           transform="matrix(0.77562249,0,0,0.73568213,60.102406,24.819628)"
+           inkscape:export-xdpi="198.5993"
+           inkscape:export-ydpi="198.5993">
           <path
              inkscape:connector-curvature="0"
              id="path104"
@@ -79,31 +82,37 @@
         </g>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:18.18921471px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.45473036;"
-           x="188.15248"
-           y="149.76752"
-           id="text823"><tspan
+           style="font-style:normal;font-weight:normal;font-size:13.73992157px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.34349802"
+           x="200.66267"
+           y="138.6171"
+           id="text823"
+           transform="scale(1.0267864,0.97391242)"
+           inkscape:export-xdpi="198.5993"
+           inkscape:export-ydpi="198.5993"><tspan
              sodipodi:role="line"
              id="tspan821"
-             x="188.15248"
-             y="149.76752"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:ARCHIVE;-inkscape-font-specification:ARCHIVE;stroke-width:0.45473036;fill:#ffffff;">EDIÇÃO ESPECIAL</tspan></text>
+             x="200.66267"
+             y="138.6171"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:ARCHIVE;-inkscape-font-specification:ARCHIVE;fill:#ffffff;stroke-width:0.34349802">EDIÇÃO ESPECIAL</tspan></text>
       </g>
       <text
          id="text117"
-         y="74.331245"
-         x="17.820078"
-         style="font-style:normal;font-weight:normal;font-size:18.30361366px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.45759031;"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Raleway;-inkscape-font-specification:'Raleway Light';fill:#ffffff;stroke-width:0.45759031;"
-           y="74.331245"
-           x="17.820078"
+         y="70.620872"
+         x="35.867851"
+         style="font-style:normal;font-weight:normal;font-size:13.82633686px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.34565839"
+         xml:space="preserve"
+         transform="scale(1.0267864,0.97391242)"
+         inkscape:export-xdpi="198.5993"
+         inkscape:export-ydpi="198.5993"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Raleway;-inkscape-font-specification:'Raleway Light';fill:#ffffff;stroke-width:0.34565839"
+           y="70.620872"
+           x="35.867851"
            id="tspan115"
            sodipodi:role="line"><tspan
    id="tspan119"
-   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:24.40481567px;line-height:5.25;font-family:Raleway;-inkscape-font-specification:'Raleway Light';fill:#ffffff;stroke-width:0.45759031;">B </tspan>E A T M A S T E <tspan
+   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:18.43511391px;line-height:5.25;font-family:Raleway;-inkscape-font-specification:'Raleway Light';fill:#ffffff;stroke-width:0.34565839">B </tspan>E A T M A S T E <tspan
    id="tspan129"
-   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:24.40481567px;font-family:Raleway;-inkscape-font-specification:'Raleway Light';fill:#ffffff;stroke-width:0.45759031;">R</tspan></tspan></text>
+   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:18.43511391px;font-family:Raleway;-inkscape-font-specification:'Raleway Light';fill:#ffffff;stroke-width:0.34565839">R</tspan></tspan></text>
     </g>
   </g>
 </svg>

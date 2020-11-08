@@ -5,7 +5,6 @@
     <script src="jquery-3.4.0.min.js"></script>
     <script src="jquery.timer.js"></script>
 
-
     <link rel="stylesheet" type="text/css" href="glitch.css">
     <link rel="stylesheet" type="text/css" href="shake.css">
     <style>
@@ -65,8 +64,6 @@
         .nome {
             word-break: break-word;
         }
-
-
 
         .bottomleft .bigname {
             text-align: left;
@@ -147,12 +144,19 @@
 </head>
 
 <body>
+    <style>
 
+        .background {
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 
-    <div class="contents">
-
+    <div class="contents background">
         <div class="middle">
-            <img src="logos/beatfellas horizontal.png" alt="" class="logo" />
+            <img src="logos/beatfellas horizontal.svg" alt="" class="logo" />
             <p class="digitos  shake-little shake-opacity">00</p>
             <p class="mensagem"></p>
         </div>
@@ -170,7 +174,7 @@
             </div>
         </div>
 
-        <div class="eq shake-opacity">
+        <div class="eq shake-opacity background">
 
             <svg preserveAspectRatio="none" id="visualizer" style="display:none;" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -192,10 +196,15 @@
         <script>
             let ct = null;
             function __TrocaLogo(nome) {
-                nome = nome || "beatfellas horizontal.png"
+                nome = nome || "";
                 $(".logo").fadeOut(500, function () {
                     $(".logo ").attr('src', nome);
                 }).fadeIn(1000)
+            }
+
+            function __TrocaBg(nome) {
+                nome = nome || "";
+                $(".background").css("background-image", "url(" + nome + ")");
             }
 
             function __Nome(nome, local) {
@@ -205,8 +214,6 @@
                 $(local).closest("div").css("display", nome == "" ? "none" : "block")
                 $(".nomes").css("display", "flex");
             }
-
-
 
             function NomeDireita(nome) {
                 __Nome(nome, "#direita")
@@ -259,8 +266,6 @@
                 __Exibir("none");
 
             }
-
-
 
             function Restart() {
                 location.href = location.href + ""
@@ -316,8 +321,6 @@
                 }
             });
 
-
-
             window.addEventListener('message', function (event) {
 
                 // IMPORTANT: Check the origin of the data!
@@ -336,6 +339,9 @@
                             break;
                         case "Logo":
                             __TrocaLogo(event.data.valor);
+                            break;
+                        case "Bg":
+                            __TrocaBg(event.data.valor);
                             break;
                         case "Eqv":
                             $("#visualizer").css('display', event.data.valor ? 'block' : 'none');
@@ -411,14 +417,10 @@
 
             var gui = require('nw.gui');
             gui.Screen.Init();
-
-
         </script>
 
         <!-- plugin equalizador -->
         <script src="eq.js"></script>
-
-
     </div>
 </body>
 </html>
