@@ -13,7 +13,7 @@
    version="1.1"
    id="svg887"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="A Liga do Beat 2020.svg">
+   sodipodi:docname="A Liga do Beat.svg">
   <defs
      id="defs881">
     <rect
@@ -30,11 +30,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7597655"
-     inkscape:cx="302.18432"
-     inkscape:cy="323.83606"
+     inkscape:zoom="1.0744707"
+     inkscape:cx="462.75274"
+     inkscape:cy="311.22613"
      inkscape:document-units="mm"
-     inkscape:current-layer="text869"
+     inkscape:current-layer="layer1"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -224,10 +224,11 @@
     </g>
     <g
        aria-label="2019"
-       style="font-style:normal;font-weight:normal;font-size:16.48179626px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.41204491"
-       id="text1492">
+       style="font-style:normal;font-weight:normal;font-size:16.4818px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.412045"
+       id="text1492"
+       transform="matrix(0.7180972,0,0,0.7180972,12.51058,20.34239)">
       <g
-         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect871);fill:#000000;fill-opacity:1;stroke:none"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect871);fill:#ffffff;fill-opacity:1;stroke:none"
          id="text869"
          transform="matrix(2.0637362,0,0,2.0637362,-20.01653,-61.515183)"
          aria-label="2020">
@@ -245,7 +246,7 @@
            d="m 25.085341,62.719607 h -2.37289 c 0,0 0.820953,-0.708494 1.484463,-1.304528 0.629772,-0.573542 1.315773,-1.192068 1.315773,-2.339152 0,-1.383249 -1.32702,-2.339153 -2.67653,-2.339153 -1.439479,0 -2.710269,0.775969 -2.710269,2.642793 0,0.24741 0.07872,0.337378 0.30364,0.337378 h 0.989642 c 0.236164,0 0.292395,-0.123706 0.292395,-0.314887 0,-0.652263 0.528558,-1.147084 1.135838,-1.147084 0.539804,0 0.955903,0.24741 0.955903,0.832198 0,0.584788 -0.708493,1.192069 -1.428233,1.810594 -1.090854,0.922167 -2.046758,1.765611 -2.046758,1.765611 -0.101213,0.07872 -0.202427,0.224918 -0.202427,0.472329 v 0.832198 c 0,0.258657 0.04498,0.326133 0.30364,0.326133 h 4.655813 c 0.258657,0 0.326133,-0.123706 0.326133,-0.326133 v -0.922166 c 0,-0.202426 -0.06748,-0.326131 -0.326133,-0.326131 z" />
         <text
            xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:11.59px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.119391;"
+           style="font-style:normal;font-weight:normal;font-size:11.59px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.119391"
            x="25.739941"
            y="64.262947"
            id="text873"><tspan
@@ -253,7 +254,7 @@
              id="tspan871"
              x="25.739941"
              y="64.262947"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Archive;-inkscape-font-specification:Archive;stroke-width:0.119391;fill:#ffffff;">1</tspan></text>
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Archive;-inkscape-font-specification:Archive;fill:#ffffff;stroke-width:0.119391">1</tspan></text>
       </g>
     </g>
   </g>
