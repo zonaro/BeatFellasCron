@@ -15,6 +15,7 @@
         <option>Passe o Microfone</option>
         <option>Passe o 🎤</option>
         <option>Fim de Round</option>
+        <option>Switch</option>
     </datalist>
     <main role="main">
 
@@ -85,13 +86,13 @@
                                         <div class="col-md-9">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <input list="beatboxers" autocomplete="on" type="text" id="esquerda" onchange="Comando('NomeEsquerda',this.value)" oninput="Comando('NomeEsquerda',this.value)" class="form-control" />
+                                                    <input list="beatboxers" autocomplete="on" type="text" id="esquerda" onchange="SelecionaNome('NomeEsquerda',this.value)" oninput="SelecionaNome('NomeEsquerda',this.value)" class="form-control" />
                                                     <button class="btn btn-secondary" onclick="InverterEsquerdaMeio()">↔</button>
                                                 </div>
-                                                <input list="beatboxers" autocomplete="on" type="text" id="meio" onchange="Comando('NomeMeio',this.value)" oninput="Comando('NomeMeio',this.value)" class="form-control" />
+                                                <input list="beatboxers" autocomplete="on" type="text" id="meio" onchange="SelecionaNome('NomeMeio',this.value)" oninput="SelecionaNome('NomeMeio',this.value)" class="form-control" />
                                                 <div class="input-group-append">
                                                     <button class="btn btn-secondary" onclick="InverterDireitaMeio()">↔</button>
-                                                    <input list="beatboxers" autocomplete="on" type="text" id="direita" onchange="Comando('NomeDireita',this.value)" oninput="Comando('NomeDireita',this.value)" class="form-control" />
+                                                    <input list="beatboxers" autocomplete="on" type="text" id="direita" onchange="SelecionaNome('NomeDireita',this.value)" oninput="SelecionaNome('NomeDireita',this.value)" class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
@@ -286,7 +287,7 @@
 
         function LimparNomes() {
             Comando('LimparNomes');
-            $("#esquerda, #direita, #meio").val("");
+            $("#esquerda, #direita, #meio").val("").trigger('change');
         }
 
         function InverterDireitaMeio() {
@@ -307,22 +308,41 @@
 
         }
 
+
+
         function LoadNames() {
             $("#beatboxers").html("");
-            fs.readFile("./APP/beatboxers.txt", function (err, lines) {
-                lines.toString().split('\n').forEach(line => {
-                    $("#beatboxers").append("<option>" + line + "</option>");
-                });
-            });
+            var rawdata = fs.readFileSync("./APP/beatboxers.json");
+            window.beatboxers_db = JSON.parse(rawdata);
+            for (var i = 0; i < window.beatboxers_db.length; i++) {
+                window.beatboxers_db[i].NomeArtistico = window.beatboxers_db[i].NomeArtistico || window.beatboxers_db[i].NomeReal;
+                if (window.beatboxers_db[i].Cidade || "" != "") {
+                    window.beatboxers_db[i].CidadeEstado = window.beatboxers_db[i].Cidade + " - " + window.beatboxers_db[i].Estado
+                } else { window.beatboxers_db[i].CidadeEstado = window.beatboxers_db[i].Estado }
+                $("#beatboxers").append("<option data-id='" + i + "'>" + window.beatboxers_db[i].NomeArtistico + "</option>");
+            }
         }
 
         function LoadLogos() {
             $("#logochanger").html("");
-            fs.readdir('./APP/logos/', (err, files) => {
-                files.forEach(file => {
-                    $("#logochanger").append("<option value='/app/logos/" + file + "'>" + file.split(".")[0] + "</option>")
+
+            fs.readdirSync('./APP/logos', { withFileTypes: true })
+                .forEach(dir => {
+
+                    console.log(dir, dir.isDirectory())
+
+                    if (dir.isDirectory()) {
+                        fs.readdir('./APP/logos/' + dir.name, (err, files) => {
+                            var grupo = $("<optgroup label='" + dir.name + "'></optgroup>").appendTo("#logochanger")
+                            files.forEach(file => {
+                                grupo.append("<option value='/app/logos/" + dir.name + "/" + file + "'>" + file.split(".")[0] + "</option>")
+                            });
+                        });
+                    } else {
+                        $("#logochanger").append("<option value='/app/logos/" + dir.name + "'>" + dir.name.split(".")[0] + "</option>")
+                    }
                 });
-            });
+
         }
 
         function LoadBG() {
@@ -340,6 +360,19 @@
             $(".corfundo").val(cor2) || "";
             $(".corfonte").val(cor1) || "";
             $(".corfundo, .corfonte").trigger('change');
+        }
+
+        function SelecionaNome(local, val) {
+            val = val || ""
+            var opts = document.getElementById('beatboxers').childNodes;
+            for (var i = 0; i < opts.length; i++) {
+                if (opts[i].value.toLowerCase() == val.toLowerCase()) {
+                    Comando(local, window.beatboxers_db[i])
+                    break;
+                } else {
+                    Comando(local, { NomeArtistico: val, NomeReal: val, Cidade: "", Estado: "", CidadeEstado: "" })
+                }
+            }
         }
 
         $(document).ready(function () {

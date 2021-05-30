@@ -94,6 +94,10 @@
             margin: 2vw;
         }
 
+        .city-info {
+            font-size: 2vw;
+        }
+
         .digitos, .mensagem {
             position: relative;
             font-size: 10vw;
@@ -164,13 +168,19 @@
         <div class="nomes">
 
             <div class="bottomleft nome">
-                <p class="bigname" id="esquerda"></p>
+                <p class="bigname" id="esquerda">
+                    <small></small>
+                </p>
             </div>
             <div class="bottommiddle nome ">
-                <p class="bigname" id="meio"></p>
+                <p class="bigname" id="meio">
+                    <small></small>
+                </p>
             </div>
             <div class="bottomright nome ">
-                <p class="bigname" id="direita"></p>
+                <p class="bigname" id="direita">
+                    <small></small>
+                </p>
             </div>
         </div>
 
@@ -207,11 +217,11 @@
                 $(".background").css("background-image", "url(" + nome + ")");
             }
 
-            function __Nome(nome, local) {
-                nome = nome || "";
-                $(local).text(nome)
-                $(local).attr('data-text', nome)
-                $(local).closest("div").css("display", nome == "" ? "none" : "block")
+            function __Nome(obj, local) {
+                console.log("Carregando", obj)
+                $(local).html("<small class='city-info'>" + obj.CidadeEstado + "</small><br>" + obj.NomeArtistico)
+                $(local).attr('data-text', obj.NomeArtistico)
+                $(local).closest("div").css("display", obj.NomeArtistico == "" ? "none" : "block")
                 $(".nomes").css("display", "flex");
             }
 
@@ -368,6 +378,7 @@
                             break;
                         case "NomeSize":
                             $(".bigname").css('font-size', event.data.valor + "vw");
+                            $(".city-info").css('font-size', (event.data.valor / 2) + "vw");
                             break;
                         case "NomeDireita":
                             NomeDireita(event.data.valor);
