@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+
+# Not these directories
+!APP/
+
+# Not these files
+ 
+!ABRIR CRONOMETRO.lnk
+!.gitignore
+!package.json
+!README.md
