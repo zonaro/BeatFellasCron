@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="jquery-3.4.0.min.js"></script>
     <script src="bootstrap.bundle.min.js"></script>
+    <script src="summernote-bs4.min.js"></script>
+    <script src="Vibrant.min.js"></script>
+    <script src="jquery.xcolor.min.js"></script>
     <link rel="stylesheet" href="bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="summernote-bs4.min.css" type="text/css" />
     <title>Cronômetro Beatfellas</title>
 </head>
 <body>
@@ -75,7 +79,7 @@
                             <a class="nav-item nav-link active" id="nav-participante-tab" data-toggle="tab" href="#nav-participante" role="tab" aria-controls="nav-participante" aria-selected="true">Beatboxers</a>
                             <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo">Logotipo da Batalha</a>
                             <a class="nav-item nav-link" id="nav-eq-tab" data-toggle="tab" href="#nav-eq" role="tab" aria-controls="nav-eq">Cores e Efeitos</a>
-                            <a class="nav-item nav-link" id="nav-eq-tab" data-toggle="tab" href="#nav-anuncio" role="tab" aria-controls="nav-anuncio">Anúncios</a>
+                            <a class="nav-item nav-link" id="nav-anuncio-tab" data-toggle="tab" href="#nav-anuncio" role="tab" aria-controls="nav-anuncio">Anúncios</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -162,9 +166,15 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <button class="btn btn-primary" onclick="GerarFundo()"> Gerar Fundo a partir de Logo</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <button class="btn btn-warning" onclick="Comando('LimparFiltros')">Limpar Filtros</button>
                                         </div>
                                     </div>
+
                                 </div>
                             </p>
                         </div>
@@ -220,6 +230,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </p>
                         </div>
@@ -230,15 +241,22 @@
                             <p>
                                 <div class="container">
                                     <div class="row">
-                                        <label class="col-md-8">
-                                            Texto do Anúncio <input class="form-control" type="text" onchange="Comando('Anunciar',this.value)" />
-                                        </label>
+
                                         <label class="col-md-3">
                                             Cor do Anúncio <input class="form-control" type="color" onchange="Comando('CorAnuncio',this.value)" />
                                         </label>
-                                        <button onclick="Comando('LimparAnuncio')">
+                                        <button class="btn btn-danger" onclick="Comando('LimparAnuncio')">
                                             Limpar Anúncio
                                         </button>
+                                        <label class="col-md-12">
+                                            Texto do Anúncio <div class="summernote"></div>
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="input_logosize">Tamanho da Fonte</label>
+                                            <input class="form-control-range" type="range" min="10" max="150" value="75" onchange="Comando('AnuncioSize',this.value)" id="input_anunciosize">
+                                        </div>
                                     </div>
                                 </div>
                             </p>
@@ -271,11 +289,16 @@
                 telao.close();
             }
             telao = window.open("cronometro.html");
+
             //telao.enterFullscreen();
             telao.onclose = function () {
                 console.warn('Cronômetro Fechado');
                 telao = null;
             };
+        }
+
+        function GerarFundo() {
+
         }
 
         function AplicarFiltros() {
@@ -312,8 +335,9 @@
 
 
         function Anunciar() {
-            Comando('Anunciar', $("#anuncio_input").val())
+            Comando('Anunciar', $("#anuncio_input").html())
         }
+
 
         function LimparNomes() {
             Comando('LimparNomes');
@@ -416,6 +440,20 @@
             LoadLogos();
             LoadBG();
             AbrirTelao();
+
+
+            $('.summernote').summernote({
+                placeholder: 'Texto do Anúncio',
+                airMode: true
+
+            });
+
+            $(".summernote").on("summernote.change", function (e) {   // callback as jquery custom event
+
+                Comando('Anunciar', $(this).summernote('code'))
+            });
+
+
         });
     </script>
 </body>

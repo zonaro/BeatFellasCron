@@ -4,6 +4,7 @@
 <head>
     <script src="jquery-3.4.0.min.js"></script>
     <script src="jquery.timer.js"></script>
+    <script src="marquee.js"></script>
 
     <link rel="stylesheet" type="text/css" href="glitch.css">
     <link rel="stylesheet" type="text/css" href="shake.css">
@@ -146,10 +147,18 @@
         }
 
         .anuncios {
-            height: 20px;
+            font-family: 'Archive';
+            height: fit-content();
             top: 0;
             z-index: 999999999999999999;
             width: 100%;
+            margin: 10px;
+            display: block;
+            position: fixed;
+            top: 0px;
+            padding: 10px;
+            font-size: 60px;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -166,10 +175,7 @@
     </style>
 
     <div class="contents background">
-        <div class="upper">
-            <marquee class="anuncios"></marquee>
-
-        </div>
+        <div class="marquee anuncios" behavior="scroll" direction="left"></div>
         <div class="middle">
             <img src="logos/beatfellas horizontal.svg" alt="" class="logo" />
             <p class="digitos  shake-little shake-opacity">00</p>
@@ -229,11 +235,14 @@
             }
 
             function __Nome(obj, local) {
-                console.log("Carregando", obj)
-                $(local).html("<small class='city-info'>" + obj.CidadeEstado + "</small><br>" + obj.NomeArtistico)
-                $(local).attr('data-text', obj.NomeArtistico)
-                $(local).closest("div").css("display", obj.NomeArtistico == "" ? "none" : "block")
-                $(".nomes").css("display", "flex");
+                obj = obj || ""
+                if (obj != "") {
+                    $(local).html("<small class='city-info'>" + obj.CidadeEstado + "</small><br>" + obj.NomeArtistico)
+                    $(local).attr('data-text', obj.NomeArtistico)
+                    $(local).closest("div").css("display", obj.NomeArtistico == "" ? "none" : "block")
+                    $(".nomes").css("display", "flex");
+                }
+
             }
 
             function NomeDireita(nome) {
@@ -292,10 +301,41 @@
                 location.href = location.href + ""
             }
 
+
+            window.lista_anuncios = [];
+            window.anuncio_ativo = 0;
+
+            var $mq = $('.anuncios');
+
             function Anunciar(texto) {
                 texto = texto || ""
-                $(".anuncios").html(texto).css("display", texto == "" ? "none" : "block");
+                window.lista_anuncios = [];
+                $("<div>" + texto + "</div>").find('p').each(function (index) {
+                    if ($(this).text() || "" != "")
+                        window.lista_anuncios.push($(this).html())
+                });
+                showRandomMarquee();
             }
+
+            function showRandomMarquee() {
+                window.anuncio_ativo = window.anuncio_ativo + 1
+                if (window.anuncio_ativo >= window.lista_anuncios.length) {
+                    window.anuncio_ativo = 0
+                }
+
+                $mq.marquee('destroy')
+                    .html(window.lista_anuncios[window.anuncio_ativo])
+                    .marquee({ duration: 2000 });
+
+                $mq.bind('finished', function () { console.log(showRandomMarquee()) });
+                return window.anuncio_ativo;
+            }
+
+
+
+
+
+
 
             function LimparAnuncio() {
                 Anunciar("")
@@ -399,6 +439,10 @@
                             $(".logo").css({
                                 WebkitFilter: ''
                             });
+                            break;
+                        case "AnuncioSize":
+                            $(".anuncios").css('font-size', event.data.valor + "px");
+
                             break;
                         case "NomeSize":
                             $(".bigname").css('font-size', event.data.valor + "vw");
