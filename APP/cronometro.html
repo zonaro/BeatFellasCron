@@ -310,6 +310,7 @@
             function Anunciar(texto) {
                 texto = texto || ""
                 window.lista_anuncios = [];
+                window.anuncio_ativo = 0;
                 $("<div>" + texto + "</div>").find('p').each(function (index) {
                     if ($(this).text() || "" != "")
                         window.lista_anuncios.push($(this).html())
@@ -325,7 +326,7 @@
 
                 $mq.marquee('destroy')
                     .html(window.lista_anuncios[window.anuncio_ativo])
-                    .marquee({ duration: 2000 });
+                    .marquee({ duration: 5000 });
 
                 $mq.bind('finished', function () { console.log(showRandomMarquee()) });
                 return window.anuncio_ativo;
@@ -362,6 +363,7 @@
                 $(this).attr('data-text', txt);
 
                 window.opener.document.querySelector(".cron_feedback").innerHTML = txt;
+                if (window.opener.ColarTempo) { window.opener.ColarTempo(txt) }
 
                 if (txt !== "") {
                     __Exibir("table");

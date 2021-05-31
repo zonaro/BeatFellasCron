@@ -8,6 +8,7 @@
     <script src="summernote-bs4.min.js"></script>
     <script src="Vibrant.min.js"></script>
     <script src="jquery.xcolor.min.js"></script>
+    <script src="Botfellas.js"></script>
     <link rel="stylesheet" href="bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="summernote-bs4.min.css" type="text/css" />
     <title>Cronômetro Beatfellas</title>
@@ -62,6 +63,17 @@
                             </div>
                             <input class="form-control" placeholder="3 Segundos" type="number" id="cooldown">
                         </div>
+
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Tempo de Espera</div>
+                            </div>
+                            <input class="form-control" placeholder="3 Segundos" type="number" id="vote_cooldown">
+                            <input class="btn btn-warning" onclick="AbrirVotacao(vote_cooldown.value)" type="button" value="Abrir Votação" />
+                        </div>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <input class="btn btn-warning" onclick="EnviarMensagem('bf-moeda')" type="button" value="Jogar Moeda" />
+                        </div>
                     </p>
                     <h4>Tela</h4>
                     <p>
@@ -80,6 +92,7 @@
                             <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo">Logotipo da Batalha</a>
                             <a class="nav-item nav-link" id="nav-eq-tab" data-toggle="tab" href="#nav-eq" role="tab" aria-controls="nav-eq">Cores e Efeitos</a>
                             <a class="nav-item nav-link" id="nav-anuncio-tab" data-toggle="tab" href="#nav-anuncio" role="tab" aria-controls="nav-anuncio">Anúncios</a>
+                            <a class="nav-item nav-link" id="nav-discord-tab" data-toggle="tab" href="#nav-discord" role="tab" aria-controls="nav-discord">Discord</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -237,7 +250,7 @@
 
 
 
-                        <div class="tab-pane fade" id="nav-anuncio" role="tabpanel" aria-labelledby="nav-eq-tab">
+                        <div class="tab-pane fade" id="nav-anuncio" role="tabpanel" aria-labelledby="nav-anuncio-tab">
                             <p>
                                 <div class="container">
                                     <div class="row">
@@ -248,9 +261,10 @@
                                         <button class="btn btn-danger" onclick="Comando('LimparAnuncio')">
                                             Limpar Anúncio
                                         </button>
-                                        <label class="col-md-12">
-                                            Texto do Anúncio <div class="summernote"></div>
-                                        </label>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class=" col-md-12 summernote"></div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -262,6 +276,24 @@
                             </p>
                         </div>
 
+
+
+
+                        <div class="tab-pane fade" id="nav-discord" role="tabpanel" aria-labelledby="nav-discord-tab">
+                            <p>
+                                <div class="container">
+                                    <div class="row">
+                                        <label class="col-md-3">
+                                            Canal de Atividade
+                                            <select onchange="EnviarMensagemEmoji('cheguei')" id="discord_canais">
+                                                <option> DESLIGADO...</option>
+                                            </select>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </p>
+                        </div>
 
                     </div>
                 </div>
@@ -444,7 +476,7 @@
 
             $('.summernote').summernote({
                 placeholder: 'Texto do Anúncio',
-                airMode: true
+                heigth: 100
 
             });
 
