@@ -75,6 +75,7 @@
                             <a class="nav-item nav-link active" id="nav-participante-tab" data-toggle="tab" href="#nav-participante" role="tab" aria-controls="nav-participante" aria-selected="true">Beatboxers</a>
                             <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo">Logotipo da Batalha</a>
                             <a class="nav-item nav-link" id="nav-eq-tab" data-toggle="tab" href="#nav-eq" role="tab" aria-controls="nav-eq">Cores e Efeitos</a>
+                            <a class="nav-item nav-link" id="nav-eq-tab" data-toggle="tab" href="#nav-anuncio" role="tab" aria-controls="nav-anuncio">Anúncios</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -222,6 +223,28 @@
                                 </div>
                             </p>
                         </div>
+
+
+
+                        <div class="tab-pane fade" id="nav-anuncio" role="tabpanel" aria-labelledby="nav-eq-tab">
+                            <p>
+                                <div class="container">
+                                    <div class="row">
+                                        <label class="col-md-8">
+                                            Texto do Anúncio <input class="form-control" type="text" onchange="Comando('Anunciar',this.value)" />
+                                        </label>
+                                        <label class="col-md-3">
+                                            Cor do Anúncio <input class="form-control" type="color" onchange="Comando('CorAnuncio',this.value)" />
+                                        </label>
+                                        <button onclick="Comando('LimparAnuncio')">
+                                            Limpar Anúncio
+                                        </button>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -240,6 +263,8 @@
         let telao = null;
 
         const fs = require('fs');
+
+
 
         function AbrirTelao() {
             if (telao) {
@@ -283,6 +308,11 @@
             } else {
                 AbrirTelao();
             }
+        }
+
+
+        function Anunciar() {
+            Comando('Anunciar', $("#anuncio_input").val())
         }
 
         function LimparNomes() {
@@ -374,6 +404,12 @@
                 }
             }
         }
+
+
+        fs.watchFile('./APP/beatboxers.json', (curr, prev) => {
+            LoadNames();
+        });
+
 
         $(document).ready(function () {
             LoadNames();

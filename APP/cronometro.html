@@ -144,6 +144,13 @@
             height: 100%;
             z-index: 10;
         }
+
+        .anuncios {
+            height: 20px;
+            top: 0;
+            z-index: 999999999999999999;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -159,6 +166,10 @@
     </style>
 
     <div class="contents background">
+        <div class="upper">
+            <marquee class="anuncios"></marquee>
+
+        </div>
         <div class="middle">
             <img src="logos/beatfellas horizontal.svg" alt="" class="logo" />
             <p class="digitos  shake-little shake-opacity">00</p>
@@ -169,17 +180,17 @@
 
             <div class="bottomleft nome">
                 <p class="bigname" id="esquerda">
-                    <small></small>
+
                 </p>
             </div>
             <div class="bottommiddle nome ">
                 <p class="bigname" id="meio">
-                    <small></small>
+
                 </p>
             </div>
             <div class="bottomright nome ">
                 <p class="bigname" id="direita">
-                    <small></small>
+
                 </p>
             </div>
         </div>
@@ -279,6 +290,19 @@
 
             function Restart() {
                 location.href = location.href + ""
+            }
+
+            function Anunciar(texto) {
+                texto = texto || ""
+                $(".anuncios").html(texto).css("display", texto == "" ? "none" : "block");
+            }
+
+            function LimparAnuncio() {
+                Anunciar("")
+            }
+
+            function CorAnuncio(cor) {
+                $(".anuncios").css("color", cor);
             }
 
             function __CorEq(id, valor) {
@@ -414,7 +438,15 @@
                         case "Restart":
                             Restart();
                             break;
-
+                        case "Anunciar":
+                            Anunciar(event.data.valor)
+                            break;
+                        case "LimparAnuncio":
+                            LimparAnuncio()
+                            break;
+                        case "CorAnuncio":
+                            CorAnuncio(event.data.valor)
+                            break;
                         default:
                             console.warn("Nada executado");
                             break;
