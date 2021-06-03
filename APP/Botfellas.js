@@ -2,7 +2,6 @@
 const client = new Discord.Client();
 
 client.once('ready', () => {
-
     console.log("Discord ON");
 
     getChannelIDs();
@@ -13,13 +12,8 @@ client.on('message', message => {
 
     if (message.content.toLowerCase().startsWith("bf-moeda")) { CaraCoroa(message); }
 
-
-
-
-
     console.log(`${message.author.tag} in #${message.channel.name} sent: ${message.content}`);
 });
-
 
 function CaraCoroa(message) {
     if (Math.floor(Math.random() * (2 - 1 + 1) + 1) % 2 == 0) {
@@ -29,7 +23,6 @@ function CaraCoroa(message) {
     }
     msg = + "@" + message.author.username + "\r\n" + msg +
         EnviarMensagem(msg, message.channel.id)
-
 }
 
 function AbrirVotacao(tempo, canal) {
@@ -40,7 +33,6 @@ function AbrirVotacao(tempo, canal) {
     tempo = tempo || 30
 
     canal = canal || $("#discord_canais").val() || "";
-
 
     var partes = [esquerda, meio, direita]
 
@@ -62,16 +54,13 @@ function AbrirVotacao(tempo, canal) {
 
     if (meio != "") {
         txt = txt + "🅾️" + ConverteTextoEmoji(" " + meio) + "\r\n \r\n"
-
     }
 
     if (direita != "") {
         txt = txt + "🅱️" + ConverteTextoEmoji(" " + direita) + "\r\n \r\n"
     }
 
-
     EnviarMensagem(txt).then(function (message) {
-
         message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
 
         if (esquerda != "") {
@@ -99,7 +88,6 @@ function AbrirVotacao(tempo, canal) {
                 console.log(collected)
 
                 for (const reaction of collected) {
-
                     if (reaction._emoji.name === '🅰️') {
                         contagem_A = contagem_A + 1
                     }
@@ -125,7 +113,6 @@ function AbrirVotacao(tempo, canal) {
                     list.push({ nome: meio, votos: contagem_O })
                 }
 
-
                 txt = "Fim da Votação:\r\n\r\n"
 
                 list.sort((a, b) => (a.votos > b.votos) ? 1 : -1)
@@ -143,39 +130,26 @@ function AbrirVotacao(tempo, canal) {
                     txt = txt + "Segunda parte: " + list[0].nome + " " + list[1].nome;
                 }
 
-
                 EnviarMensagem(txt);
 
                 message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
 
                 message.delete();
-
-
             })
             .catch(collected => {
                 console.error(collected)
             });
-
-
-
     });
-
-
 }
-
-
-
 
 function printaLista() {
     var resp = ":microphone: =========== LISTA DE BEATBOXERS ===========  :microphone:\r\n"
 
     for (var i = 0; i < window.beatboxers_db.length; i++) {
         resp = resp + window.beatboxers_db[i].NomeArtistico + " / " + window.beatboxers_db[i].CidadeEstado + "\r\n"
-
     }
     resp = resp + "======================================================================"
     EnviarMensagem(resp)
-
 }
 
 function getChannelIDs(fetch) {
@@ -192,7 +166,6 @@ function getChannelIDs(fetch) {
     }
 }
 
-
 function EnviarMensagemEmoji(texto) {
     EnviarMensagem(ConverteTextoEmoji(texto))
 }
@@ -204,7 +177,6 @@ function EnviarMensagem(texto, canal) {
     if (canal != "" && texto != "")
         return client.channels.cache.get(canal).send(texto)
 }
-
 
 function ConverteTextoEmoji(texto) {
     var digitos = (texto + "").split("");
@@ -270,10 +242,7 @@ function ColarTempo(tempo) {
             EnviarMensagem(msg)
             lasttime = tempo
         }
-
     }
-
 }
 
-
-client.login('ODQ4NjUwNDM1OTYyNzMyNTk1.YLPtTw.nhZhAPlBbTUfUISU70dhB6oNs9k');
+client.login(fs.readFileSync("./APP/discord.token"));

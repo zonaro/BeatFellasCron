@@ -1,4 +1,7 @@
 {
   "name": "BeatFellasCron",
-  "main": "app/index.html"
+  "main": "app/index.html",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
 }
