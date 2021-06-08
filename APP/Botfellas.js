@@ -32,8 +32,6 @@ function CaraCoroa(message) {
     } else {
         msg = ":coin: " + ConverteTextoEmoji("coroa");
     }
-    msg = + "@" + message.author.username + "\r\n" + msg;
-
     EnviarMensagem(msg, message.channel.id)
 }
 
@@ -56,7 +54,7 @@ function AbrirVotacao(tempo, canal) {
         meio = "";
     }
 
-    var txt = tempo + " segundos para Votacao\r\n \r\n \r\n"
+    var txt = tempo + " segundos para votação\r\n \r\n \r\n"
 
     if (esquerda != "") {
         txt = txt + "🅰️" + ConverteTextoEmoji(" " + esquerda) + "\r\n \r\n"
