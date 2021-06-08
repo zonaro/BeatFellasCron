@@ -11,3 +11,4 @@
 !package.json
 !README.md
 APP/discord.token
+APP/tokens.json
