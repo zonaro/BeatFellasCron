@@ -1,6 +1,8 @@
 ﻿<html>
 <head>
-
+    <script>
+        const fs = require('fs');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="jquery-3.4.0.min.js"></script>
@@ -66,9 +68,9 @@
 
                         <div class="input-group mb-2 mr-sm-2">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">Tempo de Espera</div>
+                                <div class="input-group-text">Tempo de Votação</div>
                             </div>
-                            <input class="form-control" placeholder="3 Segundos" type="number" id="vote_cooldown">
+                            <input class="form-control" placeholder="30 Segundos" type="number" id="vote_cooldown">
                             <input class="btn btn-warning" onclick="AbrirVotacao(vote_cooldown.value)" type="button" value="Abrir Votação" />
                         </div>
                         <div class="input-group mb-2 mr-sm-2">
@@ -88,7 +90,7 @@
                     <h4>Configurações</h4>
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-participante-tab" data-toggle="tab" href="#nav-participante" role="tab" aria-controls="nav-participante" aria-selected="true">Beatboxers</a>
+                            <a class="nav-item nav-link active" id="nav-participante-tab" data-toggle="tab" href="#nav-participante" role="tab" aria-controls="nav-participante" aria-selected="true">Participantes</a>
                             <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo">Logotipo da Batalha</a>
                             <a class="nav-item nav-link" id="nav-eq-tab" data-toggle="tab" href="#nav-eq" role="tab" aria-controls="nav-eq">Cores e Efeitos</a>
                             <a class="nav-item nav-link" id="nav-anuncio-tab" data-toggle="tab" href="#nav-anuncio" role="tab" aria-controls="nav-anuncio">Anúncios</a>
@@ -187,7 +189,6 @@
                                             <button class="btn btn-warning" onclick="Comando('LimparFiltros')">Limpar Filtros</button>
                                         </div>
                                     </div>
-
                                 </div>
                             </p>
                         </div>
@@ -243,12 +244,9 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </p>
                         </div>
-
-
 
                         <div class="tab-pane fade" id="nav-anuncio" role="tabpanel" aria-labelledby="nav-anuncio-tab">
                             <p>
@@ -261,7 +259,6 @@
                                         <button class="btn btn-danger" onclick="Comando('LimparAnuncio')">
                                             Limpar Anúncio
                                         </button>
-
                                     </div>
                                     <div class="row">
                                         <div class=" col-md-12 summernote"></div>
@@ -276,25 +273,23 @@
                             </p>
                         </div>
 
-
-
-
                         <div class="tab-pane fade" id="nav-discord" role="tabpanel" aria-labelledby="nav-discord-tab">
                             <p>
                                 <div class="container">
                                     <div class="row">
+                                        <div class="col-md-3">
+                                            <button type="button" id="ligarBot" class="btn btn-primary" onclick="IniciarBot()">Conectar Mini Bot</button>
+                                        </div>
                                         <label class="col-md-3">
                                             Canal de Atividade
                                             <select onchange="EnviarMensagemEmoji('cheguei')" id="discord_canais">
-                                                <option> DESLIGADO...</option>
+                                                <option>Não Interagir em nenhum canal</option>
                                             </select>
                                         </label>
                                     </div>
-
                                 </div>
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -311,10 +306,6 @@
 
     <script>
         let telao = null;
-
-        const fs = require('fs');
-
-
 
         function AbrirTelao() {
             if (telao) {
@@ -365,11 +356,9 @@
             }
         }
 
-
         function Anunciar() {
             Comando('Anunciar', $("#anuncio_input").html())
         }
-
 
         function LimparNomes() {
             Comando('LimparNomes');
@@ -393,8 +382,6 @@
             $("#direita, #esquerda, #meio").trigger('change');
 
         }
-
-
 
         function LoadNames() {
             $("#beatboxers").html("");
@@ -461,18 +448,15 @@
             }
         }
 
-
         fs.watchFile('./APP/beatboxers.json', (curr, prev) => {
             LoadNames();
         });
-
 
         $(document).ready(function () {
             LoadNames();
             LoadLogos();
             LoadBG();
             AbrirTelao();
-
 
             $('.summernote').summernote({
                 placeholder: 'Texto do Anúncio',
@@ -484,7 +468,6 @@
 
                 Comando('Anunciar', $(this).summernote('code'))
             });
-
 
         });
     </script>

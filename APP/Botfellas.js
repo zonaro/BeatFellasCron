@@ -1,13 +1,13 @@
 ﻿const Discord = require('discord.js');
-const client = new Discord.Client();
+const discordClient = new Discord.Client();
 
-client.once('ready', () => {
+discordClient.once('ready', () => {
     console.log("Discord ON");
-
     getChannelIDs();
+    $("#ligarBot").parent().fadeOut();
 });
 
-client.on('message', message => {
+discordClient.on('message', message => {
     if (message.content.toLowerCase().startsWith("bf-beatboxers")) { printaLista(); }
 
     if (message.content.toLowerCase().startsWith("bf-moeda")) { CaraCoroa(message); }
@@ -15,14 +15,26 @@ client.on('message', message => {
     console.log(`${message.author.tag} in #${message.channel.name} sent: ${message.content}`);
 });
 
+function IniciarBot() {
+    console.log("Conectando...")
+
+    window.tokens = JSON.parse(fs.readFileSync("./APP/tokens.json"));
+
+    let token_discord = window.tokens.discord;
+
+    console.info("TOKEN", token_discord)
+    discordClient.login(token_discord);
+}
+
 function CaraCoroa(message) {
     if (Math.floor(Math.random() * (2 - 1 + 1) + 1) % 2 == 0) {
         msg = ":coin: " + ConverteTextoEmoji("cara");
     } else {
         msg = ":coin: " + ConverteTextoEmoji("coroa");
     }
-    msg = + "@" + message.author.username + "\r\n" + msg +
-        EnviarMensagem(msg, message.channel.id)
+    msg = + "@" + message.author.username + "\r\n" + msg;
+
+    EnviarMensagem(msg, message.channel.id)
 }
 
 function AbrirVotacao(tempo, canal) {
@@ -46,8 +58,6 @@ function AbrirVotacao(tempo, canal) {
 
     var txt = tempo + " segundos para Votacao\r\n \r\n \r\n"
 
-    tempo = tempo + 5
-
     if (esquerda != "") {
         txt = txt + "🅰️" + ConverteTextoEmoji(" " + esquerda) + "\r\n \r\n"
     }
@@ -60,9 +70,8 @@ function AbrirVotacao(tempo, canal) {
         txt = txt + "🅱️" + ConverteTextoEmoji(" " + direita) + "\r\n \r\n"
     }
 
-    EnviarMensagem(txt).then(function (message) {
+    EnviarMensagem(txt).then((message) => {
         message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: false });
-
         if (esquerda != "") {
             message.react('🅰️')
         }
@@ -79,58 +88,72 @@ function AbrirVotacao(tempo, canal) {
             return (reaction.emoji.name == '🅰️' || reaction.emoji.name == '🅾️' || reaction.emoji.name == '🅱️')
         };
 
-        message.awaitReactions(filter, { max: 99999, time: tempo * 1000 })
+        Comando('Iniciar', tempo)
+
+        message.awaitReactions(filter, { max: 99999, time: (parseInt(tempo) * 1000) })
             .then(collected => {
                 var contagem_A = -1
                 var contagem_B = -1
                 var contagem_O = -1
 
-                console.log(collected)
+                Comando('Limpar');
 
                 for (const reaction of collected) {
-                    if (reaction._emoji.name === '🅰️') {
-                        contagem_A = contagem_A + 1
+                    if (reaction[1]._emoji.name === '🅰️') {
+                        contagem_A = contagem_A + reaction[1].users.cache.toJSON().length
                     }
-                    if (reaction._emoji.name === '🅱️') {
-                        contagem_B = contagem_B + 1
+                    if (reaction[1]._emoji.name === '🅱️') {
+                        contagem_B = contagem_B + reaction[1].users.cache.toJSON().length
                     }
-                    if (reaction._emoji.name === '🅾️') {
-                        contagem_O = contagem_O + 1
+                    if (reaction[1]._emoji.name === '🅾️') {
+                        contagem_O = contagem_O + reaction[1].users.cache.toJSON().length
                     }
                 }
 
                 var list = [];
 
-                if (contagem_A > 1) {
+                if (contagem_A > 0) {
                     list.push({ nome: esquerda, votos: contagem_A })
                 }
 
-                if (contagem_B > 1) {
+                if (contagem_B > 0) {
                     list.push({ nome: direita, votos: contagem_B })
                 }
 
-                if (contagem_O > 1) {
+                if (contagem_O > 0) {
                     list.push({ nome: meio, votos: contagem_O })
                 }
 
-                txt = "Fim da Votação:\r\n\r\n"
-
-                list.sort((a, b) => (a.votos > b.votos) ? 1 : -1)
-
-                var primeiro = list[0];
-                list = list.filter(function (x) {
-                    return x.votos = primeiro.votos
-                });
-
-                if (list.count == 1) {
-                    txt = txt + "Vencedor: \r\n"
-
-                    txt = txt + list[0].nome;
+                if (list.length == 0) {
+                    EnviarMensagemEmoji("Ninguem votou").then((r) => setTimeout(function () { r.delete() }, 5000));
                 } else {
-                    txt = txt + "Segunda parte: " + list[0].nome + " " + list[1].nome;
-                }
+                    list.sort((a, b) => (a.votos > b.votos) ? 1 : -1)
 
-                EnviarMensagem(txt);
+                    var primeiro = list[0];
+                    vencedores = list.filter(function (x) {
+                        return x.votos = primeiro.votos
+                    });
+
+                    if (vencedores.length == 1) {
+                        txt = txt + "Vencedor:\r\n\r\n" + ConverteTextoEmoji(vencedores[0].nome) + " (" + vencedores[0].votos + " votos)\r\n";
+                        if (list.length == 2) {
+                            txt = txt + "Segundo Lugar:\r\n\r\n" + list[1].nome + " (" + list[1].votos + " votos)\r\n";
+                        }
+                        if (list.length == 3) {
+                            txt = txt + "Proximo Round:\r\n\r\n" + list[1].nome + " X " + list[2].nome;
+                        }
+                    }
+
+                    if (vencedores.length == 2) {
+                        txt = txt + "Terceiro Round:\r\n\r\n" + ConverteTextoEmoji(list[0].nome + " X " + list[1].nome);
+                    }
+
+                    if (vencedores.length == 3) {
+                        txt = txt + "Terceiro Round:\r\n\r\n" + ConverteTextoEmoji(list[0].nome + " X " + list[1].nome + " X " + list[2].nome);
+                    }
+
+                    EnviarMensagem(txt);
+                }
 
                 message.channel.updateOverwrite(message.channel.guild.roles.everyone, { SEND_MESSAGES: null });
 
@@ -154,10 +177,13 @@ function printaLista() {
 
 function getChannelIDs(fetch) {
     try {
-        let channels = client.channels.cache.array();
+        let channels = discordClient.channels.cache.array();
         for (const channel of channels) {
             if (channel.type == 'text')
                 $("#discord_canais").append("<option value='" + channel.id + "'>" + channel.name + "</option>")
+            if (channel.name == "teste") {
+                $("#discord_canais").val(channel.id)
+            }
         }
     } catch (err) {
         console.log('array error')
@@ -167,7 +193,7 @@ function getChannelIDs(fetch) {
 }
 
 function EnviarMensagemEmoji(texto) {
-    EnviarMensagem(ConverteTextoEmoji(texto))
+    return EnviarMensagem(ConverteTextoEmoji(texto))
 }
 
 function EnviarMensagem(texto, canal) {
@@ -175,7 +201,7 @@ function EnviarMensagem(texto, canal) {
     canal = canal || $("#discord_canais").val() || "";
     console.log(canal)
     if (canal != "" && texto != "")
-        return client.channels.cache.get(canal).send(texto)
+        return discordClient.channels.cache.get(canal).send(texto)
 }
 
 function ConverteTextoEmoji(texto) {
@@ -245,4 +271,4 @@ function ColarTempo(tempo) {
     }
 }
 
-client.login(fs.readFileSync("./APP/discord.token"));
+IniciarBot();
