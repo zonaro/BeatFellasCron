@@ -260,7 +260,7 @@ function ColarTempo(tempo) {
                 msg = ConverteTextoEmoji($("#message_end").val() || "tempo")
             } else {
                 if (tempo % 30 == 0 || tempo == 15 || tempo == 10 || tempo == 5) {
-                    msg = ConverteTextoEmoji(tempo + " segundos");
+                    msg = ConverteTextoEmoji(tempo + " seg");
                 }
             }
             EnviarMensagem(msg)
