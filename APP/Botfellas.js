@@ -198,73 +198,81 @@ function EnviarMensagem(texto, canal) {
     texto = texto || ""
     canal = canal || $("#discord_canais").val() || "";
     console.log(canal)
-    if (canal != "" && texto != "")
-        return discordClient.channels.cache.get(canal).send(texto)
+    if (canal != "" && texto != "") {
+        try {
+            return discordClient.channels.cache.get(canal).send(texto)
+        } catch {            
+        }        
+    }
+    return null;
 }
 
 function ConverteTextoEmoji(texto) {
-    var digitos = (texto + "").split("");
-    for (var i = 0; i < digitos.length; i++) {
-        switch (digitos[i]) {
-            case "1":
-                digitos[i] = ":one:"
-                break;
-            case "2":
-                digitos[i] = ":two:"
-                break;
-            case "3":
-                digitos[i] = ":three:"
-                break;
-            case "4":
-                digitos[i] = ":four:"
-                break;
-            case "5":
-                digitos[i] = ":five:"
-                break;
-            case "6":
-                digitos[i] = ":six:"
-                break;
-            case "7":
-                digitos[i] = ":seven:"
-                break;
-            case "8":
-                digitos[i] = ":eight:"
-                break;
-            case "9":
-                digitos[i] = ":nine:"
-                break;
-            case "0":
-                digitos[i] = ":zero:"
-                break;
-            case " ":
-                digitos[i] = ":black_small_square:"
-                break;
-            default:
-                if (digitos[i].toLowerCase().length === 1 && digitos[i].toLowerCase().match(/[a-z]/i)) {
-                    digitos[i] = ":regional_indicator_" + digitos[i].toLowerCase() + ":";
-                }
-                break;
+    try {
+        var digitos = (texto + "").split("");
+        for (var i = 0; i < digitos.length; i++) {
+            switch (digitos[i]) {
+                case "1":
+                    digitos[i] = ":one:"
+                    break;
+                case "2":
+                    digitos[i] = ":two:"
+                    break;
+                case "3":
+                    digitos[i] = ":three:"
+                    break;
+                case "4":
+                    digitos[i] = ":four:"
+                    break;
+                case "5":
+                    digitos[i] = ":five:"
+                    break;
+                case "6":
+                    digitos[i] = ":six:"
+                    break;
+                case "7":
+                    digitos[i] = ":seven:"
+                    break;
+                case "8":
+                    digitos[i] = ":eight:"
+                    break;
+                case "9":
+                    digitos[i] = ":nine:"
+                    break;
+                case "0":
+                    digitos[i] = ":zero:"
+                    break;
+                case " ":
+                    digitos[i] = ":black_small_square:"
+                    break;
+                default:
+                    if (digitos[i].toLowerCase().length === 1 && digitos[i].toLowerCase().match(/[a-z]/i)) {
+                        digitos[i] = ":regional_indicator_" + digitos[i].toLowerCase() + ":";
+                    }
+                    break;
+            }
         }
+        return digitos.join(" ")
+    } catch {
+        return texto;
     }
-    return digitos.join(" ")
 }
 
 var lasttime = 0;
 function ColarTempo(tempo) {
     tempo = tempo || "NOPE";
     if (!isNaN(tempo)) {
-        msg = "";
         tempo = parseInt(tempo)
         if (lasttime != tempo) {
+            lasttime = tempo
             if (tempo == 0) {
-                msg = ConverteTextoEmoji($("#message_end").val() || "tempo")
+                EnviarMensagemEmoji($("#message_end").val() || "tempo");
+
             } else {
                 if (tempo % 30 == 0 || tempo == 15 || tempo == 10 || tempo == 5) {
-                    msg = ConverteTextoEmoji(tempo + " seg");
+                    EnviarMensagemEmoji(tempo + " seg");
                 }
             }
-            EnviarMensagem(msg)
-            lasttime = tempo
         }
     }
 }
