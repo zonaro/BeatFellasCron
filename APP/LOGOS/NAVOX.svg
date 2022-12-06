@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="132.19843mm"
+   height="37.999832mm"
+   viewBox="0 0 132.19843 37.999832"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="NAVOX.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="331.63308"
+     inkscape:cy="44.547727"
+     inkscape:window-width="2560"
+     inkscape:window-height="1009"
+     inkscape:window-x="1432"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="text63" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-16.869686,-80.990098)">
+    <g
+       aria-label="NAVOX"
+       id="text63"
+       style="font-size:54.253px;stroke-width:4.52108">
+      <path
+         d="M 57.044706,81.012605 45.024191,108.73589 35.204929,85.461351 33.312624,81.066858 16.869686,118.98971 h 3.79771 l 11.996993,-27.669035 9.819264,23.274535 1.83805,4.3945 h 0.05425 l 16.46646,-37.977105 h -3.79771 z"
+         style="font-family:AL_LePORSCHE_PersonalUseOnly;-inkscape-font-specification:AL_LePORSCHE_PersonalUseOnly;fill:#ffffff"
+         id="path273" />
+      <path
+         d="M 62.489035,81.009142 46.538653,118.98625 h 4.068975 l 2.441385,-5.69657 H 71.98331 l 2.387132,5.69657 h 4.123227 L 64.550649,85.946165 Z m 0,9.819793 8.287635,19.645255 -16.622042,-0.0468 z"
+         style="font-family:AL_LePORSCHE_PersonalUseOnly;-inkscape-font-specification:AL_LePORSCHE_PersonalUseOnly;fill:#ffffff"
+         id="path275"
+         sodipodi:nodetypes="ccccccccccccc" />
+      <path
+         d="M 64.159984,81.012819 80.110366,118.98993 82.17198,114.10716 96.114993,81.012819 H 91.991772 L 80.110366,109.22439 v 0 L 68.228959,81.012819 Z"
+         style="font-family:AL_LePORSCHE_PersonalUseOnly;-inkscape-font-specification:AL_LePORSCHE_PersonalUseOnly;fill:#ffffff"
+         id="path277" />
+      <path
+         d="m 109.75657,80.990098 c -10.364007,0 -18.730792,8.528718 -18.730792,18.89273 0,10.417992 8.366785,18.892732 18.730792,18.892732 10.36402,0 18.7308,-8.47474 18.7308,-18.892732 0,-10.364012 -8.36678,-18.89273 -18.7308,-18.89273 z m 0,3.778546 c 8.31281,0 14.95226,6.747404 14.95226,15.114184 0,8.420762 -6.63945,15.114182 -14.95226,15.114182 -8.3128,0 -14.952246,-6.69342 -14.952246,-15.114182 0,-8.36678 6.639446,-15.114184 14.952246,-15.114184 z"
+         style="font-family:AL_LePORSCHE_PersonalUseOnly;-inkscape-font-specification:AL_LePORSCHE_PersonalUseOnly;stroke-width:4.49827;fill:#ffffff"
+         id="path279" />
+      <path
+         d="m 122.16327,81.116763 11.30004,20.555297 -9.47051,17.11148 h 4.30477 l 7.31812,-13.18337 7.26431,13.18337 h 4.30478 l -9.47051,-17.11148 11.35384,-20.555297 h -4.30477 l -9.14765,16.680998 -9.20145,-16.680998 z"
+         style="font-family:AL_LePORSCHE_PersonalUseOnly;-inkscape-font-specification:AL_LePORSCHE_PersonalUseOnly;stroke-width:4.48414;fill:#ffffff"
+         id="path281" />
+      <rect
+         style="fill:#ffffff;stroke-width:4.07055"
+         id="rect647"
+         width="68.521225"
+         height="2.7875266"
+         x="53.118114"
+         y="110.47537" />
+    </g>
+  </g>
+</svg>
