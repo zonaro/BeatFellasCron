@@ -18,7 +18,7 @@
 
 ## Beatboxers
 
-- Para adicionar/remover beatboxers a base, abra o arquivo `beatboxers.txt` que está na pasta `APP` e coloque um beatboxer por linha;
+- Para adicionar/remover beatboxers a base, abra o arquivo `beatboxers.json` que está na pasta `APP`;
 
 ## Batalhas
 
