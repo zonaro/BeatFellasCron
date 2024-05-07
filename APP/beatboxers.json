@@ -8,10 +8,10 @@
 	},
 	{
 		"NomeArtistico": "Aaron",
-		"NomeReal": "",
-		"Cidade": "",
-		"Estado": "",
-		"Instagram": ""
+		"NomeReal": "Aaron Vale Matos",
+		"Cidade": "São Paulo",
+		"Estado": "SP",
+		"Instagram": "aaron.matosss"
 	},
 	{
 		"NomeArtistico": "Alden",
@@ -42,6 +42,13 @@
 		"Instagram": ""
 	},
 	{
+		"NomeArtistico": "Blizz",
+		"NomeReal": "Manuel José Otero Martínez",
+		"Cidade": "São José dos Pinhais",
+		"Estado": "PR",
+		"Instagram": "blizz_bbx"
+	},
+	{
 		"NomeArtistico": "Baldi",
 		"NomeReal": "",
 		"Cidade": "",
@@ -64,10 +71,10 @@
 	},
 	{
 		"NomeArtistico": "Calavrox",
-		"NomeReal": "",
-		"Cidade": "",
-		"Estado": "",
-		"Instagram": ""
+		"NomeReal": "Fernando Miguel Osuna Manaure",
+		"Cidade": "Curitiba",
+		"Estado": "PR",
+		"Instagram": "calavrox_bbx"
 	},
 	{
 		"NomeArtistico": "Cardosin",
@@ -231,6 +238,13 @@
 		"Instagram": ""
 	},
 	{
+		"NomeArtistico": "Kami",
+		"NomeReal": "Gustavo Kamimura Martins da Silva ",
+		"Cidade": "Suzano",
+		"Estado": "SP",
+		"Instagram": "sirk_xx"
+	},
+	{
 		"NomeArtistico": "Kaizonaro",
 		"NomeReal": "Gabriel Zonaro",
 		"Cidade": "São Paulo",
@@ -316,10 +330,10 @@
 	},
 	{
 		"NomeArtistico": "MVS",
-		"NomeReal": "",
-		"Cidade": "Guaxupé",
-		"Estado": "MG",
-		"Instagram": ""
+		"NomeReal": "Marcus Vinícius De Souza",
+		"Cidade": "São Paulo",
+		"Estado": "SP",
+		"Instagram": "mvsbbx"
 	},
 	{
 		"NomeArtistico": "Machine",
@@ -350,11 +364,11 @@
 		"Instagram": ""
 	},
 	{
-		"NomeArtistico": "Mateus Vilardo",
+		"NomeArtistico": "Vilardo",
 		"NomeReal": "Mateus Vilardo",
 		"Cidade": "Rio de Janeiro",
 		"Estado": "RJ",
-		"Instagram": ""
+		"Instagram": "mateusvilardo"
 	},
 	{
 		"NomeArtistico": "Math",
@@ -615,5 +629,26 @@
 		"Cidade": "Salvador",
 		"Estado": "BA",
 		"Instagram": "kagejinsei"
+	},
+	{
+		"NomeArtistico": "Manga",
+		"NomeReal": "Eduardo Sousa da Silva",
+		"Cidade": "São Paulo",
+		"Estado": "SP",
+		"Instagram": "edumang1"
+	},
+	{
+		"NomeArtistico": "ADBR",
+		"NomeReal": "Adilson Brasil de Souza Junior",
+		"Cidade": "São Paulo",
+		"Estado": "SP",
+		"Instagram": "adbr_bbx"
+	},
+	{
+		"NomeArtistico": "Pix",
+		"NomeReal": "Juan Santiago Silva",
+		"Cidade": "Santo André",
+		"Estado": "SP",
+		"Instagram": "pix_bbx"
 	}
 ]
