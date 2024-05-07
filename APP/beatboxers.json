@@ -245,6 +245,13 @@
 		"Instagram": ""
 	},
 	{
+		"NomeArtistico": "KDB",
+		"NomeReal": "Antonio Carlos Silva Santos",
+		"Cidade": "Jacobina",
+		"Estado": "BA",
+		"Instagram": "kdb_beats_"
+	},
+	{
 		"NomeArtistico": "Krolok",
 		"NomeReal": "",
 		"Cidade": "Terra Boa",
@@ -568,10 +575,10 @@
 	},
 	{
 		"NomeArtistico": "Velkans",
-		"NomeReal": "",
-		"Cidade": "",
-		"Estado": "",
-		"Instagram": ""
+		"NomeReal": "Victor Hugo Martins Faria",
+		"Cidade": "Goiânia",
+		"Estado": "GO",
+		"Instagram": "velkansbbx"
 	},
 	{
 		"NomeArtistico": "Warlet",
@@ -601,5 +608,12 @@
 		"Cidade": "Campo Grande",
 		"Estado": "MS",
 		"Instagram": "rekinbbx"
+	},
+	{
+		"NomeArtistico": "Kage",
+		"NomeReal": "Gabriel dos Santos de Jesus",
+		"Cidade": "Salvador",
+		"Estado": "BA",
+		"Instagram": "kagejinsei"
 	}
 ]
